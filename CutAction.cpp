@@ -1,23 +1,23 @@
-#include "CopyAction.h"
+#include "CutAction.h"
 
-Copy::Copy(ApplicationManager *pApp) : Action(pApp)
+Cut::Cut(ApplicationManager *pApp) : Action(pApp)
 {
     gameObject = NULL;
 }
 
-void Copy::ReadActionParameters()
+void Cut::ReadActionParameters()
 {
     Grid *pGrid = pManager->GetGrid();
     Output *pOut = pGrid->GetOutput();
     Input *pIn = pGrid->GetInput();
 
-    pOut->PrintMessage("Copy: Click on Cell to Copy its Object...");
+    pOut->PrintMessage("Copy: Click on Cell to Cut its Object...");
     cellpos = pIn->GetCellClicked();
 
     pOut->ClearStatusBar();
 }
 
-void Copy::Execute()
+void Cut::Execute()
 {
     ReadActionParameters();
     Grid *pGrid = pManager->GetGrid();
@@ -30,4 +30,5 @@ void Copy::Execute()
         return;
     }
     pGrid->SetClipboard(gameObject);
+    pGrid->RemoveObjectFromCell(cellpos);
 }

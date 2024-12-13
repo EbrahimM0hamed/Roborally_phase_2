@@ -5,6 +5,7 @@
 #include "AddRotatingGearAction.h"
 #include "AddFlagAction.h"
 #include "CopyAction.h"
+#include "CutAction.h"
 ///TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()

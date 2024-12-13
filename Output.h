@@ -14,8 +14,6 @@ class Output	// The application manager & grid (phase 2) should have a pointer t
 private:	
 
 	window* pWind;	// Pointer to the Graphics Window
-	int* beltDrawedFrom=new int[55];
-	int* beltDrawedTo=new int[55];
 	// ========== Some Utility Functions (Private Functions) ==========
 
 	// IMPLEMENT THE FOLLOWING FUNCTION

@@ -555,12 +555,6 @@ void Output::DrawPlayer(const CellPosition & cellPos, int playerNum, color playe
 
 void Output::DrawBelt(const CellPosition& fromCellPos, const CellPosition& toCellPos) const
 {	
-	for(int i=1;i<56;i++){
-		if(fromCellPos.GetCellNum()==beltDrawedFrom[i]||fromCellPos.GetCellNum()==beltDrawedTo[i])
-			return;
-		else if(toCellPos.GetCellNum()==beltDrawedTo[i]||fromCellPos.GetCellNum()==beltDrawedFrom[i])
-			return;
-	}
 	int fromCellStartX = GetCellStartX(fromCellPos);
 	int fromCellStartY = GetCellStartY(fromCellPos);
 	int toCellStartX = GetCellStartX(toCellPos);
@@ -589,8 +583,6 @@ void Output::DrawBelt(const CellPosition& fromCellPos, const CellPosition& toCel
 			//       2. Draw the line of the belt using the appropriate coordinates
 			
 			DrawTriangle(centerX,centerY,triangleHeight,triangleWidth,RIGHT,UI.BeltColor);
-			beltDrawedFrom[fromCellPos.GetCellNum()]=fromCellPos.GetCellNum();
-			beltDrawedTo[toCellPos.GetCellNum()]=toCellPos.GetCellNum();
 
 			// Draw the triangle at the center of the belt line pointing to the direction of the belt
 		}else{
@@ -601,8 +593,6 @@ void Output::DrawBelt(const CellPosition& fromCellPos, const CellPosition& toCel
 			pWind->SetPen(UI.BeltColor,UI.BeltLineWidth);
 			pWind->DrawLine(beltFromCellX,beltFromCellY,beltToCellX,beltToCellY);
 			DrawTriangle(centerX,centerY,triangleHeight,triangleWidth,LEFT,UI.BeltColor);
-			beltDrawedFrom[fromCellPos.GetCellNum()]=fromCellPos.GetCellNum();
-			beltDrawedTo[toCellPos.GetCellNum()]=toCellPos.GetCellNum();
 		}
 	}else if(fromCellPos.HCell()==toCellPos.HCell()){
 		if(fromCellPos.GetCellNum()<toCellPos.GetCellNum()){
@@ -619,8 +609,6 @@ void Output::DrawBelt(const CellPosition& fromCellPos, const CellPosition& toCel
 			pWind->SetPen(UI.BeltColor,UI.BeltLineWidth);
 			pWind->DrawLine(beltFromCellX,beltFromCellY,beltToCellX,beltToCellY);
 			DrawTriangle(centerX,centerY,triangleHeight,triangleWidth,UP,UI.BeltColor);
-			beltDrawedFrom[fromCellPos.GetCellNum()]=fromCellPos.GetCellNum();
-			beltDrawedTo[toCellPos.GetCellNum()]=toCellPos.GetCellNum();
 
 		}else{
 			int beltFromCellX = fromCellStartX + (UI.CellWidth / 2) + UI.BeltXOffset;
@@ -636,9 +624,6 @@ void Output::DrawBelt(const CellPosition& fromCellPos, const CellPosition& toCel
 			pWind->SetPen(UI.BeltColor,UI.BeltLineWidth);
 			pWind->DrawLine(beltFromCellX,beltFromCellY,beltToCellX,beltToCellY);
 			DrawTriangle(centerX,centerY,triangleHeight,triangleWidth,DOWN,UI.BeltColor);
-			beltDrawedFrom[fromCellPos.GetCellNum()]=fromCellPos.GetCellNum();
-			beltDrawedTo[toCellPos.GetCellNum()]=toCellPos.GetCellNum();
-
 		}
 	}
 
