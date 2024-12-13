@@ -2,7 +2,7 @@
 
 CopyAction::CopyAction(ApplicationManager *pApp) : Action(pApp)
 {
-    gameObject = NULL;
+    gameObject = nullptr;
 }
 
 void CopyAction::ReadActionParameters()
@@ -30,4 +30,8 @@ void CopyAction::Execute()
         return;
     }
     pGrid->SetClipboard(gameObject);
+}
+
+CopyAction::~CopyAction()
+{
 }

@@ -6,7 +6,7 @@
 #include "AddFlagAction.h"
 #include "CopyAction.h"
 #include "CutAction.h"
-///TODO: Add #include for all action types
+/// TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
 {
@@ -27,7 +27,7 @@ ApplicationManager::~ApplicationManager()
 //								Interface Management Functions						//
 //==================================================================================//
 
-Grid * ApplicationManager::GetGrid() const
+Grid *ApplicationManager::GetGrid() const
 {
 	return pGrid;
 }
@@ -50,9 +50,9 @@ ActionType ApplicationManager::GetUserAction() const
 ////////////////////////////////////////////////////////////////////////////////////
 
 // Creates an action and executes it
-void ApplicationManager::ExecuteAction(ActionType ActType) 
+void ApplicationManager::ExecuteAction(ActionType ActType)
 {
-	Action* pAct = NULL;
+	Action *pAct = NULL;
 
 	// According to Action Type, create the corresponding action object
 	switch (ActType)
@@ -69,33 +69,28 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		// create an object of AddFlagAction here
 		pAct = new AddFlagAction(this);
 		break;
-	// case COPY_GAMEOBJECT:
-	// 	pAct= new CopyAction(this);
+	case COPY_GAMEOBJECT:
+		pAct = new CopyAction(this);
+		break;
 	case EXIT:
 		break;
 
-	case TO_PLAY_MODE:					//TODO:
+	case TO_PLAY_MODE:				   // TODO:
 		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
-	
-
-	case TO_DESIGN_MODE:				//TODO:
+	case TO_DESIGN_MODE:				 // TODO:
 		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
-		
+		/// TODO: Add a case for EACH Action type in the Design mode or Play mode
 
-		///TODO: Add a case for EACH Action type in the Design mode or Play mode
-
-
-
-	case STATUS:	// a click on the status bar ==> no action
+	case STATUS: // a click on the status bar ==> no action
 		return;
 	}
 
 	// Execute the created action
-	if(pAct != NULL)
+	if (pAct != NULL)
 	{
 		pAct->Execute(); // Execute
 		delete pAct;	 // Action is not needed any more after executing ==> delete it

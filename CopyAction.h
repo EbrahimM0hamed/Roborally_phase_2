@@ -6,8 +6,7 @@
 
 class CopyAction : public Action
 {
-protected:
-    // return the game object if there is and NULL is there isn't
+
     GameObject *gameObject;
     CellPosition cellpos;
 
@@ -15,4 +14,5 @@ public:
     CopyAction(ApplicationManager *pApp);
     virtual void ReadActionParameters();
     virtual void Execute();
+    virtual ~CopyAction();
 };
