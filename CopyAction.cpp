@@ -1,11 +1,11 @@
 #include "CopyAction.h"
 
-Copy::Copy(ApplicationManager *pApp) : Action(pApp)
+CopyAction::CopyAction(ApplicationManager *pApp) : Action(pApp)
 {
     gameObject = NULL;
 }
 
-void Copy::ReadActionParameters()
+void CopyAction::ReadActionParameters()
 {
     Grid *pGrid = pManager->GetGrid();
     Output *pOut = pGrid->GetOutput();
@@ -17,7 +17,7 @@ void Copy::ReadActionParameters()
     pOut->ClearStatusBar();
 }
 
-void Copy::Execute()
+void CopyAction::Execute()
 {
     ReadActionParameters();
     Grid *pGrid = pManager->GetGrid();

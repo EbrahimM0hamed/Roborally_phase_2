@@ -1,11 +1,11 @@
 #include "CutAction.h"
 
-Cut::Cut(ApplicationManager *pApp) : Action(pApp)
+CutAction::CutAction(ApplicationManager *pApp) : Action(pApp)
 {
     gameObject = NULL;
 }
 
-void Cut::ReadActionParameters()
+void CutAction::ReadActionParameters()
 {
     Grid *pGrid = pManager->GetGrid();
     Output *pOut = pGrid->GetOutput();
@@ -17,7 +17,7 @@ void Cut::ReadActionParameters()
     pOut->ClearStatusBar();
 }
 
-void Cut::Execute()
+void CutAction::Execute()
 {
     ReadActionParameters();
     Grid *pGrid = pManager->GetGrid();

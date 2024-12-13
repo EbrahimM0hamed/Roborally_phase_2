@@ -69,7 +69,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		// create an object of AddFlagAction here
 		pAct = new AddFlagAction(this);
 		break;
-
+	// case COPY_GAMEOBJECT:
+	// 	pAct= new CopyAction(this);
 	case EXIT:
 		break;
 
