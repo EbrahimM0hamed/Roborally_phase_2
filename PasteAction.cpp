@@ -42,7 +42,8 @@ void PasteAction::Execute()
     gameObject = dynamic_cast<Workshop *>(pGameObj);
     if (gameObject)
     {
-       
+        Workshop *pWorkshop = new Workshop(cellpos);
+        pGrid->AddObjectToCell(pWorkshop);
         return;
     }
     gameObject = dynamic_cast<Antenna *>(pGameObj);
@@ -51,10 +52,12 @@ void PasteAction::Execute()
        
         return;
     }
-    gameObject = dynamic_cast<RotatingGear *>(pGameObj);
-    if (gameObject)
+    RotatingGear *pRotatingGear = dynamic_cast<RotatingGear *>(pGameObj);
+    bool clock=pRotatingGear->GetisClockWise();
+    if (pRotatingGear)
     {
-       
+        RotatingGear *pRotatingGear = new RotatingGear(cellpos,clock);
+        pGrid->AddObjectToCell(pRotatingGear);
         return;
     }
     

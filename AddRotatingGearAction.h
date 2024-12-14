@@ -7,6 +7,7 @@ class AddRotatingGearAction :public Action
 {
 	CellPosition gearPos; //The position of the rotating gear
 	bool clockwise; //bool value indicating if the gear will be in clockwise direction if true direction will be clockwise if false direction will be anticlockwise
+	bool choice;
 public:
 	AddRotatingGearAction(ApplicationManager *pApp);
 	virtual void ReadActionParameters(); // Reads action parameters 
