@@ -151,6 +151,13 @@ Belt * Grid::GetNextBelt(const CellPosition & position)
 // ========= User Interface Functions =========
 
 
+GameObject *Grid::GetGameObject(CellPosition pos) const
+{
+	int v=pos.VCell();
+	int h=pos.HCell();
+	return CellList[v][h]->GetGameObject();
+}
+
 void Grid::UpdateInterface() const
 {
 	if (UI.InterfaceMode == MODE_DESIGN)

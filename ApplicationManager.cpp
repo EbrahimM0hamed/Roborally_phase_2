@@ -6,6 +6,7 @@
 #include "AddFlagAction.h"
 #include "CopyAction.h"
 #include "CutAction.h"
+#include "PasteAction.h"
 /// TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -71,6 +72,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case COPY_GAMEOBJECT:
 		pAct = new CopyAction(this);
+		break;
+	case PASTE_GAMEOBJECT:
+		pAct = new PasteAction(this);
 		break;
 	case EXIT:
 		break;

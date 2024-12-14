@@ -11,7 +11,7 @@ void CutAction::ReadActionParameters()
     Output *pOut = pGrid->GetOutput();
     Input *pIn = pGrid->GetInput();
 
-    pOut->PrintMessage("Copy: Click on Cell to Cut its Object...");
+    pOut->PrintMessage("Cut: Click on Cell to Cut its Object...");
     cellpos = pIn->GetCellClicked();
 
     pOut->ClearStatusBar();
@@ -21,8 +21,9 @@ void CutAction::Execute()
 {
     ReadActionParameters();
     Grid *pGrid = pManager->GetGrid();
-    Cell cell(cellpos);
-    gameObject = cell.GetGameObject();
+    // Cell cell(cellpos);
+    // gameObject = cell.GetGameObject();
+    gameObject = pGrid->GetGameObject(cellpos);
 
     if (!gameObject)
     {

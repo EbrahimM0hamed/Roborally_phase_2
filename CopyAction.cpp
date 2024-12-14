@@ -2,7 +2,7 @@
 
 CopyAction::CopyAction(ApplicationManager *pApp) : Action(pApp)
 {
-    gameObject = nullptr;
+   // gameObject = nullptr;
 }
 
 void CopyAction::ReadActionParameters()
@@ -21,9 +21,9 @@ void CopyAction::Execute()
 {
     ReadActionParameters();
     Grid *pGrid = pManager->GetGrid();
-    Cell cell(cellpos);
-    gameObject = cell.GetGameObject();
-
+    // Cell cell(cellpos);
+    // gameObject = cell.GetGameObject();
+    gameObject = pGrid->GetGameObject(cellpos);
     if (!gameObject)
     {
         pGrid->PrintErrorMessage("Error: Cell doesn't has any object ! Click to continue ...");

@@ -199,6 +199,9 @@
     <ClCompile Include="CutAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="PasteAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -326,6 +329,9 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="CutAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="PasteAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

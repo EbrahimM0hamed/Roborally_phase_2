@@ -54,7 +54,7 @@ public:
 
 	void SetClipboard(GameObject * gameObject);  // A setter to be used in copy/cut (in order NOT to break class responsibilities)
 	GameObject * GetClipboard() const;	 // A getter to be used in paste (in order NOT to break class responsibilities)
-
+	GameObject * GetGameObject(CellPosition pos) const;	
 	void SetEndGame(bool endGame);	 // A setter for endGame data member
 	bool GetEndGame() const;		 // A getter for endGame data member
 
