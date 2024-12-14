@@ -7,6 +7,7 @@
 #include "CopyAction.h"
 #include "CutAction.h"
 #include "PasteAction.h"
+#include "DeleteAction.h"
 /// TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -73,8 +74,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case COPY_GAMEOBJECT:
 		pAct = new CopyAction(this);
 		break;
+	case CUT_GAMEOBJECT:
+		pAct = new CutAction(this);
+		break;
 	case PASTE_GAMEOBJECT:
 		pAct = new PasteAction(this);
+		break;
+	case DELETE_GAMEOBJECT:
+		pAct = new DeleteAction(this);
 		break;
 	case EXIT:
 		break;

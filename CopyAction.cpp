@@ -2,7 +2,7 @@
 
 CopyAction::CopyAction(ApplicationManager *pApp) : Action(pApp)
 {
-   // gameObject = nullptr;
+    gameObject = nullptr;
 }
 
 void CopyAction::ReadActionParameters()
@@ -21,8 +21,6 @@ void CopyAction::Execute()
 {
     ReadActionParameters();
     Grid *pGrid = pManager->GetGrid();
-    // Cell cell(cellpos);
-    // gameObject = cell.GetGameObject();
     gameObject = pGrid->GetGameObject(cellpos);
     if (!gameObject)
     {

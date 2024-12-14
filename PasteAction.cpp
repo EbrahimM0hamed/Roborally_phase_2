@@ -7,7 +7,7 @@
 
 PasteAction::PasteAction(ApplicationManager *pApp) : Action(pApp)
 {
-   // gameObject = nullptr;
+    gameObject = nullptr;
 }
 void PasteAction::ReadActionParameters()
 {
@@ -26,6 +26,11 @@ void PasteAction::Execute()
     Grid *pGrid = pManager->GetGrid();
     GameObject *pGameObj = pGrid->GetClipboard();
 
+    if (!pGameObj)
+    {
+        pGrid->PrintErrorMessage("Error: Clipboard doesn't has any object ! Click to continue ...");
+        return;
+    }
     gameObject = dynamic_cast<Flag *>(pGameObj);
     if (gameObject)
     {
@@ -61,12 +66,7 @@ void PasteAction::Execute()
         return;
     }
     
-    if (!gameObject)
-    {
-        pGrid->PrintErrorMessage("Error: Clipboard doesn't has any object ! Click to continue ...");
-        return;
-    }
-    pGrid->AddObjectToCell(gameObject);
+    //pGrid->AddObjectToCell(gameObject);
 }
 PasteAction::~PasteAction()
 {

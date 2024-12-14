@@ -2,7 +2,7 @@
 
 CutAction::CutAction(ApplicationManager *pApp) : Action(pApp)
 {
-    gameObject = NULL;
+    gameObject = nullptr;
 }
 
 void CutAction::ReadActionParameters()
@@ -21,8 +21,6 @@ void CutAction::Execute()
 {
     ReadActionParameters();
     Grid *pGrid = pManager->GetGrid();
-    // Cell cell(cellpos);
-    // gameObject = cell.GetGameObject();
     gameObject = pGrid->GetGameObject(cellpos);
 
     if (!gameObject)
