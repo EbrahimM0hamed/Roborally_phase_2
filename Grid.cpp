@@ -43,7 +43,19 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 	CellPosition pos = pNewObject->GetPosition();
 	if (pos.IsValidCell()) // Check if valid position
 	{
-		// Get the previous GameObject of the Cell
+		if(Belt *pBelt=dynamic_cast<Belt *>(pNewObject)){
+			CellPosition EndBelt=pBelt->GetEndPosition();
+			// Get the previous GameObject of the Cell
+			GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
+			GameObject * pEnd = CellList[EndBelt.VCell()][EndBelt.HCell()]->GetGameObject();
+			if( pPrevObject || pEnd)  // the cell already contains a game object
+				return false; // do NOT add and return false
+
+			// Set the game object of the Cell with the new game object
+			CellList[pos.VCell()][pos.HCell()]->SetGameObject(pNewObject);
+			CellList[EndBelt.VCell()][EndBelt.HCell()]->SetGameObject(pNewObject);
+			return true; // indicating that addition is done
+		}
 		GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if( pPrevObject)  // the cell already contains a game object
 			return false; // do NOT add and return false
@@ -51,6 +63,7 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 		// Set the game object of the Cell with the new game object
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(pNewObject);
 		return true; // indicating that addition is done
+
 	}
 	return false; // if not a valid position
 }
@@ -62,7 +75,9 @@ bool Grid::RemoveObjectFromCell(const CellPosition & pos)
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-
+		if(Belt *pBelt=dynamic_cast<Belt *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject())){
+			CellList[pBelt->GetEndPosition().VCell()][pBelt->GetEndPosition().HCell()]->SetGameObject(NULL);
+		}
 		return CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 	}
 	return false;
