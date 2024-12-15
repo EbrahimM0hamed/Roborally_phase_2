@@ -38,10 +38,22 @@ void PasteAction::Execute()
         pGrid->AddObjectToCell(pFalg);
         return;
     }
-    gameObject = dynamic_cast<Belt *>(pGameObj);
-    if (gameObject)
+    Belt *pBelt = dynamic_cast<Belt *>(pGameObj);
+    if (pBelt)
     {
-       // Belt *belt = new Belt(cellpos);
+        CellPosition sartPos=pBelt->GetPosition();
+        CellPosition EndPos=pBelt->GetEndPosition();
+        if(sartPos.VCell()==EndPos.VCell()){
+            int h=EndPos.HCell()-sartPos.HCell()+cellpos.HCell();
+            CellPosition endPos(cellpos.VCell(),h);
+            Belt *belt = new Belt(cellpos,endPos);
+            pGrid->AddObjectToCell(belt);
+        }else{
+            int v=EndPos.VCell()-sartPos.VCell()+cellpos.VCell();
+            CellPosition endPos(v,cellpos.HCell());
+            Belt *belt = new Belt(cellpos,endPos);
+            pGrid->AddObjectToCell(belt);
+        }
         return;
     }
     gameObject = dynamic_cast<Workshop *>(pGameObj);
@@ -54,15 +66,16 @@ void PasteAction::Execute()
     gameObject = dynamic_cast<Antenna *>(pGameObj);
     if (gameObject)
     {
-       
+        Antenna *pAntenna = new Antenna(cellpos);
+        pGrid->AddObjectToCell(pAntenna);
         return;
     }
     RotatingGear *pRotatingGear = dynamic_cast<RotatingGear *>(pGameObj);
     bool clock=pRotatingGear->GetisClockWise();
     if (pRotatingGear)
     {
-        RotatingGear *pRotatingGear = new RotatingGear(cellpos,clock);
-        pGrid->AddObjectToCell(pRotatingGear);
+        RotatingGear *rotatingGear = new RotatingGear(cellpos,clock);
+        pGrid->AddObjectToCell(rotatingGear);
         return;
     }
     

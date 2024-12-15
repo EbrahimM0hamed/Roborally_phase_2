@@ -555,6 +555,8 @@ void Output::DrawPlayer(const CellPosition & cellPos, int playerNum, color playe
 
 void Output::DrawBelt(const CellPosition& fromCellPos, const CellPosition& toCellPos) const
 {	
+	if(!fromCellPos.IsValidCell() || !toCellPos.IsValidCell())
+		return;
 	int fromCellStartX = GetCellStartX(fromCellPos);
 	int fromCellStartY = GetCellStartY(fromCellPos);
 	int toCellStartX = GetCellStartX(toCellPos);
