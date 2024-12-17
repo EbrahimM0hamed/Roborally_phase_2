@@ -31,15 +31,17 @@ void AddAntennaAction::Execute()
 
 	Grid * pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
 
-										
-	bool added = pGrid->AddObjectToCell(pAntenna);
-
 	// if the GameObject cannot be added
-	if (!added)
-	{
-		// Print an appropriate message
-		pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
-	}
+	if(!pGrid->GetHasAntenna()){
+		bool added = pGrid->AddObjectToCell(pAntenna);
+	// 4-Check if added and print an errror message if flag couldn't be added
+		if (!added)
+		{
+			// Print an appropriate message
+			pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+		}
+	}else
+		pGrid->PrintErrorMessage("Error: There is an antenna already ! Click to continue ...");
 	// Here, the is created and added to the GameObject of its Cell, so we finished executing
 
 }

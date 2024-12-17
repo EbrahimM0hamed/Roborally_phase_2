@@ -34,6 +34,10 @@ void PasteAction::Execute()
     gameObject = dynamic_cast<Flag *>(pGameObj);
     if (gameObject)
     {
+        if(pGrid->GetHasFlag()){
+            pGrid->PrintErrorMessage("Error: Can't paste a flag more than one time ! Click to continue ...");
+            return;
+        }
         Flag *pFalg = new Flag(cellpos);
         pGrid->AddObjectToCell(pFalg);
         return;
@@ -66,6 +70,10 @@ void PasteAction::Execute()
     gameObject = dynamic_cast<Antenna *>(pGameObj);
     if (gameObject)
     {
+        if(pGrid->GetHasAntenna()){
+            pGrid->PrintErrorMessage("Error: Can't paste an antenna more than one time ! Click to continue ...");
+            return;
+        }
         Antenna *pAntenna = new Antenna(cellpos);
         pGrid->AddObjectToCell(pAntenna);
         return;

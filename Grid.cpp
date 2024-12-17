@@ -73,10 +73,12 @@ bool Grid::RemoveObjectFromCell(const CellPosition & pos)
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-		if(Belt *pBelt=dynamic_cast<Belt *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
-			CellList[pBelt->GetEndPosition().VCell()][pBelt->GetEndPosition().HCell()]->SetGameObject(NULL);
-		if(Flag *pFlag=dynamic_cast<Flag *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
+		// if(Belt *pBelt=dynamic_cast<Belt *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
+		// 	CellList[pBelt->GetEndPosition().VCell()][pBelt->GetEndPosition().HCell()]->SetGameObject(NULL);
+		if(dynamic_cast<Flag *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
 			hasFlag=false;
+		if(dynamic_cast<Antenna *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
+			hasAntenna=false;
 		return CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 	}
 	return false;
