@@ -26,7 +26,7 @@ class Grid
 							// currPlayerNumber is: from 0 to MaxPlayerCount - 1
 
 	GameObject * Clipboard;	   // This is used in copy/cut/paste game objects (should be set in copy/cut and got in paste)
-
+	bool hasFlag;
 	bool endGame;	       // A boolean indicating if the Game is ended or not (a player reaches the flag cell or not)
 
 public:
@@ -59,6 +59,7 @@ public:
 	bool GetEndGame() const;		 // A getter for endGame data member
 
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
+	bool GetHasFlag();
 
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 

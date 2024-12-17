@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "Belt.h"
 #include "Player.h"
+#include "Flag.h"
 
 Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pIn, pOut
 {
@@ -26,6 +27,8 @@ Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pI
 	// Initialize currPlayerNumber with 0 (first player)
 	currPlayerNumber = 0; // start with the first player
 
+	hasFlag=false;
+	
 	// Initialize Clipboard with NULL
 	Clipboard = NULL;
 
@@ -59,7 +62,8 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 		GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if( pPrevObject)  // the cell already contains a game object
 			return false; // do NOT add and return false
-
+		if(Flag *pFlag=dynamic_cast<Flag *>(pNewObject))
+			hasFlag=true;
 		// Set the game object of the Cell with the new game object
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(pNewObject);
 		return true; // indicating that addition is done
@@ -75,9 +79,10 @@ bool Grid::RemoveObjectFromCell(const CellPosition & pos)
 	if (pos.IsValidCell()) // Check if valid position
 	{
 		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-		if(Belt *pBelt=dynamic_cast<Belt *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject())){
+		if(Belt *pBelt=dynamic_cast<Belt *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
 			CellList[pBelt->GetEndPosition().VCell()][pBelt->GetEndPosition().HCell()]->SetGameObject(NULL);
-		}
+		if(Flag *pFlag=dynamic_cast<Flag *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
+			hasFlag=false;
 		return CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 	}
 	return false;
@@ -136,6 +141,10 @@ void Grid::AdvanceCurrentPlayer()
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
 }
 
+bool Grid::GetHasFlag()
+{
+	return hasFlag;
+}
 // ========= Other Getters =========
 
 
