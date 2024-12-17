@@ -31,6 +31,10 @@ void PasteAction::Execute()
         pGrid->PrintErrorMessage("Error: Clipboard doesn't has any object ! Click to continue ...");
         return;
     }
+    if(dynamic_cast<GameObject *>(pGrid->GetGameObject(cellpos))){
+        pGrid->PrintErrorMessage("Error: Cell already has an object ! Click to continue ...");
+    }
+
     gameObject = dynamic_cast<Flag *>(pGameObj);
     if (gameObject)
     {

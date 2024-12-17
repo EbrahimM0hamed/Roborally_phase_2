@@ -11,6 +11,7 @@
 #include "AddWaterPitAction.h"
 #include "AddDangerZoneAction.h"
 #include "AddAntennaAction.h"
+#include "AddWorkshopAction.h"
 /// TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -75,6 +76,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case SET_WATERPIT:
 		pAct = new AddWaterPitAction(this);
+		break;
+	case SET_WORKSHOP:
+		pAct = new AddWorkshopAction(this);
 		break;
 	case SET_DANGERZONE:
 		pAct = new AddDangerZoneAction(this);

@@ -14,7 +14,7 @@ void AddAntennaAction::ReadActionParameters()
 	Input* pIn = pGrid->GetInput();
 
 	// Read the parameter
-	pOut->PrintMessage("New Belt: Click on its Start Cell ...");
+	pOut->PrintMessage("New Antenna: Click on its Start Cell ...");
 	antennaPos = pIn->GetCellClicked();
 	// Clear messages
 	pOut->ClearStatusBar();
