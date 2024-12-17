@@ -64,7 +64,7 @@ WaterPit * Cell::HasWaterPit() const
 
 	///TODO: Implement the following function like HasBelt() function
 
-	return false; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
+	return dynamic_cast<WaterPit *>(pGameObject);; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
 
 }
 
@@ -72,7 +72,7 @@ DangerZone * Cell::HasDangerZone() const
 {
 	///TODO: Implement the following function like HasBelt() function
 
-	return false; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
+	return dynamic_cast<DangerZone *>(pGameObject);;; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
 }
 
 RotatingGear * Cell::HasRotatingGear() const

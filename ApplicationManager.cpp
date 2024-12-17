@@ -8,6 +8,8 @@
 #include "CutAction.h"
 #include "PasteAction.h"
 #include "DeleteAction.h"
+#include "AddWaterPitAction.h"
+#include "AddDangerZoneAction.h"
 /// TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -59,17 +61,23 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	// According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
-	case SET_BELT:
-		pAct = new AddBeltAction(this);
-		break;
 
-	case SET_ROTATINGGEAR:
-		// create an object of AddRotatingGearAction here
-		pAct = new AddRotatingGearAction(this);
-		break;
 	case SET_FLAG_CELL:
 		// create an object of AddFlagAction here
 		pAct = new AddFlagAction(this);
+		break;
+	case SET_BELT:
+		pAct = new AddBeltAction(this);
+		break;
+	case SET_WATERPIT:
+		pAct = new AddWaterPitAction(this);
+		break;
+	case SET_DANGERZONE:
+		pAct = new AddDangerZoneAction(this);
+		break;
+	case SET_ROTATINGGEAR:
+		// create an object of AddRotatingGearAction here
+		pAct = new AddRotatingGearAction(this);
 		break;
 	case COPY_GAMEOBJECT:
 		pAct = new CopyAction(this);
