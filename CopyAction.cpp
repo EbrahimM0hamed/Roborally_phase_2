@@ -24,11 +24,11 @@ void CopyAction::Execute()
     ReadActionParameters();
     Grid *pGrid = pManager->GetGrid();
     gameObject = pGrid->GetGameObject(cellpos);
-    if(Flag *pFlag=dynamic_cast<Flag *>(gameObject)){
+    if(dynamic_cast<Flag *>(gameObject)){
         pGrid->PrintErrorMessage("Error: Can't Copy Flag ! Click to continue ...");
         return;
     }
-    if(Antenna *pFlag=dynamic_cast<Antenna *>(gameObject)){
+    if(dynamic_cast<Antenna *>(gameObject)){
         pGrid->PrintErrorMessage("Error: Can't Copy Antenna ! Click to continue ...");
         return;
     }

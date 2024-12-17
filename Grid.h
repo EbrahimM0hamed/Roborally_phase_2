@@ -27,6 +27,7 @@ class Grid
 
 	GameObject * Clipboard;	   // This is used in copy/cut/paste game objects (should be set in copy/cut and got in paste)
 	bool hasFlag;
+	bool hasAntenna;
 	bool endGame;	       // A boolean indicating if the Game is ended or not (a player reaches the flag cell or not)
 
 public:
@@ -60,6 +61,7 @@ public:
 
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
 	bool GetHasFlag();
+	bool GetHasAntenna();
 
 	bool checkBeltEnd(CellPosition cellpos);
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)

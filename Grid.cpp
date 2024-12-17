@@ -5,6 +5,7 @@
 #include "Belt.h"
 #include "Player.h"
 #include "Flag.h"
+#include "Antenna.h"
 
 Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pIn, pOut
 {
@@ -28,6 +29,7 @@ Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pI
 	currPlayerNumber = 0; // start with the first player
 
 	hasFlag=false;
+	hasAntenna=false;
 	
 	// Initialize Clipboard with NULL
 	Clipboard = NULL;
@@ -46,23 +48,12 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 	CellPosition pos = pNewObject->GetPosition();
 	if (pos.IsValidCell()) // Check if valid position
 	{
-		/*if(Belt *pBelt=dynamic_cast<Belt *>(pNewObject)){
-			CellPosition EndBelt=pBelt->GetEndPosition();
-			// Get the previous GameObject of the Cell
-			GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
-			GameObject * pEnd = CellList[EndBelt.VCell()][EndBelt.HCell()]->GetGameObject();
-			if( pPrevObject || pEnd)  // the cell already contains a game object
-				return false; // do NOT add and return false
-
-			// Set the game object of the Cell with the new game object
-			CellList[pos.VCell()][pos.HCell()]->SetGameObject(pNewObject);
-			CellList[EndBelt.VCell()][EndBelt.HCell()]->SetGameObject(pNewObject);
-			return true; // indicating that addition is done
-		}*/
 		GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if( pPrevObject)  // the cell already contains a game object
 			return false; // do NOT add and return false
-		if(Flag *pFlag=dynamic_cast<Flag *>(pNewObject)){
+		if(dynamic_cast<Antenna *>(pNewObject))
+			hasAntenna=true;
+		if(dynamic_cast<Flag *>(pNewObject)){
 			if(!checkBeltEnd(pos))
 				return false;
 			hasFlag=true;
@@ -147,6 +138,10 @@ void Grid::AdvanceCurrentPlayer()
 bool Grid::GetHasFlag()
 {
 	return hasFlag;
+}
+bool Grid::GetHasAntenna()
+{
+	return hasAntenna;
 }
 
 bool Grid::checkBeltEnd(CellPosition cellpos)

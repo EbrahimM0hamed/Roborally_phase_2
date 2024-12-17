@@ -10,6 +10,7 @@
 #include "DeleteAction.h"
 #include "AddWaterPitAction.h"
 #include "AddDangerZoneAction.h"
+#include "AddAntennaAction.h"
 /// TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -65,6 +66,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SET_FLAG_CELL:
 		// create an object of AddFlagAction here
 		pAct = new AddFlagAction(this);
+		break;
+	case SET_ANTENNA:
+		pAct = new AddAntennaAction(this);
 		break;
 	case SET_BELT:
 		pAct = new AddBeltAction(this);

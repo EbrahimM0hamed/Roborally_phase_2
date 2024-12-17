@@ -39,7 +39,7 @@ void AddDangerZoneAction::Execute()
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 	// == Here are some guideline steps (numbered below) to implement this function ==
 
-	// 1-Create a flag object
+	// 1-Create a DangerZone object
 	DangerZone * pDangerZone =new DangerZone(dangerPosition);
 	// 2-get a pointer to the Grid from the ApplicationManager
 	Grid * pGrid = pManager->GetGrid();

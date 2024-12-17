@@ -9,6 +9,7 @@
 #include "Output.h"
 #include "Flag.h"
 #include "RotatingGear.h"
+#include "Antenna.h"
 
 Cell::Cell(const CellPosition & pos) : position(pos)
 {
@@ -54,15 +55,14 @@ Belt * Cell::HasBelt() const
 Flag * Cell::HasFlag() const
 {
 
-	///TODO: Implement the following function like HasBelt() function
+	// Implement the following function like HasBelt() function
 	return dynamic_cast<Flag *>(pGameObject);
-	// return false; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
-
+	
 }
 WaterPit * Cell::HasWaterPit() const
 {
 
-	///TODO: Implement the following function like HasBelt() function
+	// Implement the following function like HasBelt() function
 
 	return dynamic_cast<WaterPit *>(pGameObject);; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
 
@@ -70,7 +70,7 @@ WaterPit * Cell::HasWaterPit() const
 
 DangerZone * Cell::HasDangerZone() const
 {
-	///TODO: Implement the following function like HasBelt() function
+	// Implement the following function like HasBelt() function
 
 	return dynamic_cast<DangerZone *>(pGameObject);;; // THIS LINE SHOULD CHANGED WITH YOUR IMPLEMENTATION
 }
@@ -78,6 +78,11 @@ DangerZone * Cell::HasDangerZone() const
 RotatingGear * Cell::HasRotatingGear() const
 {
 	return dynamic_cast<RotatingGear *>(pGameObject);
+
+}
+Antenna * Cell::HasAntenna() const
+{
+	return dynamic_cast<Antenna *>(pGameObject);
 
 }
 
@@ -99,7 +104,7 @@ void Cell::DrawCellOrWaterPitOrDangerZone(Output* pOut) const
 void Cell::DrawGameObject(Output* pOut) const
 {
 	//TODO: edit this incomplete implemntation to check for other game objects (excluding waterpits and dangerzones)
-	if (HasFlag()|| HasBelt()|| HasRotatingGear())
+	if (HasFlag()|| HasBelt()|| HasRotatingGear()|| HasAntenna())
 		pGameObject->Draw(pOut); // draw game object
 	
 
