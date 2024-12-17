@@ -46,7 +46,7 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 	CellPosition pos = pNewObject->GetPosition();
 	if (pos.IsValidCell()) // Check if valid position
 	{
-		if(Belt *pBelt=dynamic_cast<Belt *>(pNewObject)){
+		/*if(Belt *pBelt=dynamic_cast<Belt *>(pNewObject)){
 			CellPosition EndBelt=pBelt->GetEndPosition();
 			// Get the previous GameObject of the Cell
 			GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
@@ -58,12 +58,15 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 			CellList[pos.VCell()][pos.HCell()]->SetGameObject(pNewObject);
 			CellList[EndBelt.VCell()][EndBelt.HCell()]->SetGameObject(pNewObject);
 			return true; // indicating that addition is done
-		}
+		}*/
 		GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if( pPrevObject)  // the cell already contains a game object
 			return false; // do NOT add and return false
-		if(Flag *pFlag=dynamic_cast<Flag *>(pNewObject))
+		if(Flag *pFlag=dynamic_cast<Flag *>(pNewObject)){
+			if(!checkBeltEnd(pos))
+				return false;
 			hasFlag=true;
+		}
 		// Set the game object of the Cell with the new game object
 		CellList[pos.VCell()][pos.HCell()]->SetGameObject(pNewObject);
 		return true; // indicating that addition is done
@@ -144,6 +147,20 @@ void Grid::AdvanceCurrentPlayer()
 bool Grid::GetHasFlag()
 {
 	return hasFlag;
+}
+
+bool Grid::checkBeltEnd(CellPosition cellpos)
+{
+	for (int i = NumVerticalCells-1; i >= 0 ; i--) 
+	{
+		for (int j = 0; j < NumHorizontalCells; j++) 
+		{
+			if(Belt *pBelt=dynamic_cast<Belt *>(CellList[i][j]->GetGameObject()))
+				if(cellpos.GetCellNum()==pBelt->GetEndPosition().GetCellNum())
+					return false;
+		}
+	}
+	return true;
 }
 // ========= Other Getters =========
 

@@ -20,13 +20,13 @@ void AddRotatingGearAction::ReadActionParameters()
 	gearPos = pIn->GetCellClicked();
 	
 	// 3- Read whether the direction will be clockwise or not
-	pOut->PrintMessage("Writre: Clockwise Or CounterClockwise ! Click to continue ...");
-	string clock = pIn->GetSrting(pOut);
-	if (clock == "Clockwise"){
+	pOut->PrintMessage("Please enter a number: 1.Clockwise Or 2.CounterClockwise ! Click to continue ...");
+	int clock = pIn->GetInteger(pOut);
+	if (clock == 1){
 		clockwise = true;
 		choice = true;
 	}
-	else if (clock == "CounterClockwise"){
+	else if (clock == 2){
 		clockwise = false;
 		choice = true;
 	}
