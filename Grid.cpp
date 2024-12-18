@@ -53,6 +53,9 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 			return false; // do NOT add and return false
 		if(dynamic_cast<Antenna *>(pNewObject))
 			hasAntenna=true;
+		if(dynamic_cast<Belt *>(pNewObject))
+			if(!checkBeltEnd(pos))
+				return false;
 		if(dynamic_cast<Flag *>(pNewObject)){
 			if(!checkBeltEnd(pos))
 				return false;

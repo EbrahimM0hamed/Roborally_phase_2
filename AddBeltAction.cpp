@@ -42,6 +42,11 @@ void AddBeltAction::Execute()
 
 	Grid * pGrid = pManager->GetGrid(); // We get a pointer to the Grid from the ApplicationManager
 
+	if(startPos.GetCellNum()==endPos.GetCellNum()){
+		pGrid->PrintErrorMessage("Error: You picked the same cell ! Click to continue ...");
+		return;
+	}
+
 										
 	bool added = pGrid->AddObjectToCell(pBelt);
 
