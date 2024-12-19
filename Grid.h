@@ -62,7 +62,8 @@ public:
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
 	bool GetHasFlag();
 	bool GetHasAntenna();
-
+	void setBeltBody(Belt *pBelt,bool exist);
+	bool checkBeltBody(Belt *pBelt);
 	bool checkBeltEnd(CellPosition cellpos);
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 

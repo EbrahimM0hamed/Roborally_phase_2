@@ -21,6 +21,7 @@ class Cell
 
 	GameObject * pGameObject;       // a pointer to the GameObject existing in the Cell (if any)
 	                                // if no GameObject in this Cell, pGameObject should be NULL
+	bool insideBeltBody;
 
 public:
 
@@ -42,6 +43,8 @@ public:
 	DangerZone* HasDangerZone() const;
 	Antenna* HasAntenna() const;
 	Workshop* HasWorkshop() const;
+	void SetInsideBeltBody(bool insideBeltBody);
+	bool GetInsideBeltBody();
 	// ======= Drawing Functions ======= 
 
 	void DrawCellOrWaterPitOrDangerZone(Output* pOut) const;	// Draws the Cell either has waterpit or dangerzone(either of the gameobjects changes the cell color)

@@ -16,12 +16,15 @@ Cell::Cell(const CellPosition & pos) : position(pos)
 {
 	// initializes the data members (position & pGameObject)
 	pGameObject = NULL;
+	insideBeltBody=false;
 }
 
 Cell::Cell(int v, int h) : position(v, h)
 {
 	// initializes the data members (position & pGameObject)
 	pGameObject = NULL;
+	insideBeltBody=false;
+	
 }
 
 
@@ -91,7 +94,14 @@ Workshop * Cell::HasWorkshop() const
 	return dynamic_cast<Workshop *>(pGameObject);
 
 }
-
+void Cell::SetInsideBeltBody(bool beltBody)
+{
+	insideBeltBody=beltBody;
+}
+bool Cell::GetInsideBeltBody()
+{
+	return insideBeltBody;
+}
 
 // ======= Drawing Functions ======= 
 

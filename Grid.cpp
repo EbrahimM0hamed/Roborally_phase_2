@@ -53,9 +53,13 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 			return false; // do NOT add and return false
 		if(dynamic_cast<Antenna *>(pNewObject))
 			hasAntenna=true;
-		if(dynamic_cast<Belt *>(pNewObject))
+		if(Belt* pBelt=dynamic_cast<Belt *>(pNewObject)){
 			if(!checkBeltEnd(pos))
 				return false;
+			if(!checkBeltBody(pBelt))
+				return false;
+			setBeltBody(pBelt,true);
+		}
 		if(dynamic_cast<Flag *>(pNewObject)){
 			if(!checkBeltEnd(pos))
 				return false;
@@ -82,6 +86,8 @@ bool Grid::RemoveObjectFromCell(const CellPosition & pos)
 			hasFlag=false;
 		if(dynamic_cast<Antenna *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
 			hasAntenna=false;
+		if(Belt* pBelt=dynamic_cast<Belt *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
+			setBeltBody(pBelt,false);
 		return CellList[pos.VCell()][pos.HCell()]->SetGameObject(NULL);
 	}
 	return false;
@@ -147,6 +153,57 @@ bool Grid::GetHasFlag()
 bool Grid::GetHasAntenna()
 {
 	return hasAntenna;
+}
+void Grid::setBeltBody(Belt *pBelt,bool exist)
+{
+	int vStart=pBelt->GetPosition().VCell();	
+	int hStart=pBelt->GetPosition().HCell();	
+	int vEnd=pBelt->GetEndPosition().VCell();	
+	int hEnd=pBelt->GetEndPosition().HCell();
+	for(int i=vStart;i<=vEnd;i++){
+		for(int j=hStart;j<=hEnd;j++){
+			CellList[i][j]->SetInsideBeltBody(exist);
+		}
+		for(int j=hStart;j>=hEnd;j--){
+			CellList[i][j]->SetInsideBeltBody(exist);
+		}
+	}	
+	for(int i=vStart;i>=vEnd;i--){
+		for(int j=hStart;j<=hEnd;j++){
+			CellList[i][j]->SetInsideBeltBody(exist);
+		}
+		for(int j=hStart;j>=hEnd;j--){
+			CellList[i][j]->SetInsideBeltBody(exist);
+		}
+	}	
+}
+bool Grid::checkBeltBody(Belt *pBelt)
+{
+	int vStart=pBelt->GetPosition().VCell();	
+	int hStart=pBelt->GetPosition().HCell();	
+	int vEnd=pBelt->GetEndPosition().VCell();	
+	int hEnd=pBelt->GetEndPosition().HCell();
+	for(int i=vStart;i<=vEnd;i++){
+		for(int j=hStart;j<=hEnd;j++){
+			if(CellList[i][j]->GetInsideBeltBody())
+				return false;
+		}
+		for(int j=hStart;j>=hEnd;j--){
+			if(CellList[i][j]->GetInsideBeltBody())
+				return false;
+		}
+	}	
+	for(int i=vStart;i>=vEnd;i--){
+		for(int j=hStart;j<=hEnd;j++){
+			if(CellList[i][j]->GetInsideBeltBody())
+				return false;
+		}
+		for(int j=hStart;j>=hEnd;j--){
+			if(CellList[i][j]->GetInsideBeltBody())
+				return false;
+		}
+	}
+	return true;
 }
 
 bool Grid::checkBeltEnd(CellPosition cellpos)
