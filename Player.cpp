@@ -110,7 +110,7 @@ void Player::Move(Grid * pGrid, Command moveCommands[])
 	
 	if (position.IsValidCell() == true)
 	{
-		pGrid->UpdatePlayerCell(this, position);
+		pGrid->UpdatePlayerCell(this , position);
 	}
 	
 	pGrid->PrintErrorMessage("Click anywhere to execute the next command.");
