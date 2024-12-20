@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include "Grid.h"
 #include "GameObject.h"
 
 Player::Player(Cell * pCell, int playerNum) : stepCount(0), health(10), playerNum(playerNum), currDirection(RIGHT)
@@ -69,7 +69,60 @@ void Player::Move(Grid * pGrid, Command moveCommands[])
 	// - Use the CellPosition class to help you calculate the destination cell using the current cell
 	// - Use the Grid class to update pCell
 	// - Don't forget to apply game objects at the final destination cell and check for game ending
+	CellPosition position;
+	position=pCell->GetCellPosition();
+	for (int i = 0;i < COMMANDS_COUNT;i++)
+	{
+		if (moveCommands[i]==MOVE_FORWARD_ONE_STEP)
+		{
+			position.AddCellNum(1, RIGHT);
+		}
+		else if (moveCommands[i] == MOVE_BACKWARD_ONE_STEP)
+		{
+			position.AddCellNum(1, LEFT);
+		}
+		else if (moveCommands[i] == MOVE_FORWARD_TWO_STEPS)
+		{
+			position.AddCellNum(2, RIGHT);
+		}
+		else if (moveCommands[i] == MOVE_BACKWARD_TWO_STEPS)
+		{
+			position.AddCellNum(2, LEFT);
+		}
+		else if (moveCommands[i] == MOVE_FORWARD_THREE_STEPS)
+		{
+			position.AddCellNum(3, RIGHT);
+		}
+		else if (moveCommands[i] == MOVE_BACKWARD_THREE_STEPS)
+		{
+			position.AddCellNum(3, LEFT);
+		}
+		else if (moveCommands[i] == ROTATE_CLOCKWISE)
+		{
+			currDirection = (Direction)((currDirection + 1) % 4);
+		}
+		else if (moveCommands[i] == ROTATE_COUNTERCLOCKWISE)
+		{
+			currDirection = (Direction)((currDirection + 3) % 4);
+		}
 
+	}
+	
+	if (position.IsValidCell() == true)
+	{
+		pGrid->UpdatePlayerCell(this, position);
+	}
+	
+	pGrid->PrintErrorMessage("Click anywhere to execute the next command.");
+	int x = 0, y = 0;
+	pGrid->GetInput()->GetPointClicked(x,y);
+
+	Cell* fCell = pGrid->GetCurrentPlayer()->GetCell();
+	if (fCell->GetGameObject())
+	{
+		fCell->GetGameObject()->Apply(pGrid, this);
+	}
+	//not ended yet
 }
 
 void Player::AppendPlayerInfo(string & playersInfo) const
