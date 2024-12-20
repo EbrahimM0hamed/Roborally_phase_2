@@ -217,7 +217,9 @@
     <ClCompile Include="AddWorkshopAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="SaveGridAction.cpp" />
+    <ClCompile Include="SaveGridAction.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -365,6 +367,8 @@
     <ClInclude Include="AddWorkshopAction.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="SaveGridAction.h" />
+    <ClInclude Include="SaveGridAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

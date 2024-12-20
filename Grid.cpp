@@ -112,14 +112,13 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 
 void Grid::SaveAll(ofstream &OutFile,string file,Type type)
 {
-	OutFile.open(file,ios::out);
-	int falgNum=0,beltNum=0,antennaNum=0,rotatingGearNum=0,workShopNum=0,waterPitnum=0,dangerZonenum=0;
+	int flagNum=0,beltNum=0,antennaNum=0,rotatingGearNum=0,workShopNum=0,waterPitnum=0,dangerZonenum=0;
 	for (int i = NumVerticalCells-1; i >= 0 ; i--) 
 	{
 		for (int j = 0; j < NumHorizontalCells; j++) 
 		{
 			if (dynamic_cast<Flag*>(CellList[i][j]->GetGameObject()))
-				falgNum++;
+				flagNum++;
 			if (dynamic_cast<Belt*>(CellList[i][j]->GetGameObject()))
 				beltNum++;
 			if (dynamic_cast<RotatingGear*>(CellList[i][j]->GetGameObject()))
@@ -137,7 +136,7 @@ void Grid::SaveAll(ofstream &OutFile,string file,Type type)
 	switch (type)
 	{
 	case FLAG:
-		OutFile<<left<<setw(10)<<"Flag Number: "<<falgNum;
+		OutFile<<"Flag Number: "<<flagNum<<endl;
 		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
 		{
 		for (int j = 0; j < NumHorizontalCells; j++) 
@@ -148,7 +147,7 @@ void Grid::SaveAll(ofstream &OutFile,string file,Type type)
 		}
 		break;
 	case BELT:
-		OutFile<<"Belt Number: "<<beltNum;
+		OutFile<<"Belt Number: "<<beltNum<<endl;
 		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
 		{
 			for (int j = 0; j < NumHorizontalCells; j++) 
@@ -159,7 +158,7 @@ void Grid::SaveAll(ofstream &OutFile,string file,Type type)
 		}
 		break;
 	case ANTENNA:
-		OutFile<<"Antenna Number: "<<antennaNum;
+		OutFile<<"Antenna Number: "<<antennaNum<<endl;
 		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
 		{
 			for (int j = 0; j < NumHorizontalCells; j++) 
@@ -170,7 +169,7 @@ void Grid::SaveAll(ofstream &OutFile,string file,Type type)
 		}
 		break;
 	case ROTATINGGEAR:
-		OutFile<<"RotatingGear Number: "<<rotatingGearNum;
+		OutFile<<"RotatingGear Number: "<<rotatingGearNum<<endl;
 		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
 		{
 			for (int j = 0; j < NumHorizontalCells; j++) 
@@ -181,7 +180,7 @@ void Grid::SaveAll(ofstream &OutFile,string file,Type type)
 		}
 		break;
 	case WORKSHOP:
-		OutFile<<"Workshop Number: "<<workShopNum;
+		OutFile<<"Workshop Number: "<<workShopNum<<endl;
 		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
 		{
 			for (int j = 0; j < NumHorizontalCells; j++) 
@@ -192,7 +191,7 @@ void Grid::SaveAll(ofstream &OutFile,string file,Type type)
 		}
 		break;
 	case WATERPIT:
-		OutFile<<"WaterPit Number: "<<waterPitnum;
+		OutFile<<"WaterPit Number: "<<waterPitnum<<endl;
 		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
 		{
 			for (int j = 0; j < NumHorizontalCells; j++) 
@@ -203,7 +202,7 @@ void Grid::SaveAll(ofstream &OutFile,string file,Type type)
 		}
 		break;
 	case DANGERZONE:
-		OutFile<<"DangerZone Number: "<<dangerZonenum;
+		OutFile<<"DangerZone Number: "<<dangerZonenum<<endl;
 		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
 		{
 			for (int j = 0; j < NumHorizontalCells; j++) 

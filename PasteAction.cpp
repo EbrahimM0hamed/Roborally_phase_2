@@ -4,7 +4,8 @@
 #include "Workshop.h"
 #include "Antenna.h"
 #include "RotatingGear.h"
-
+#include "WaterPit.h"
+#include "DangerZone.h"
 PasteAction::PasteAction(ApplicationManager *pApp) : Action(pApp)
 {
     gameObject = nullptr;
@@ -83,15 +84,28 @@ void PasteAction::Execute()
         return;
     }
     RotatingGear *pRotatingGear = dynamic_cast<RotatingGear *>(pGameObj);
-    bool clock=pRotatingGear->GetisClockWise();
     if (pRotatingGear)
     {
+        bool clock=pRotatingGear->GetisClockWise();
         RotatingGear *rotatingGear = new RotatingGear(cellpos,clock);
         pGrid->AddObjectToCell(rotatingGear);
         return;
+    } 
+    gameObject = dynamic_cast<DangerZone *>(pGameObj);
+    if (gameObject)
+    {
+        DangerZone *pDangerZone = new DangerZone(cellpos);
+        pGrid->AddObjectToCell(pDangerZone);
+        return;
     }
-    
-    //pGrid->AddObjectToCell(gameObject);
+    gameObject = dynamic_cast<WaterPit *>(pGameObj);
+    if (gameObject)
+    {
+        WaterPit *pWaterPit = new WaterPit(cellpos);
+        pGrid->AddObjectToCell(pWaterPit);
+        return;
+    }
+    // pGrid->AddObjectToCell(gameObject);
 }
 PasteAction::~PasteAction()
 {
