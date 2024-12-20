@@ -24,6 +24,11 @@ void DangerZone::Apply(Grid * pGrid, Player * pPlayer)
 	// 3- Update the players info which is displayed (check Grid class and decide which function to use)
 	
 }
+void DangerZone::Save(ofstream &OutFile,string file)
+{
+	OutFile.open(file,ios::out);
+	OutFile<<position.GetCellNum();
+}
 
 
 DangerZone::~DangerZone()

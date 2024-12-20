@@ -68,5 +68,14 @@ enum Command
 
 	COMMANDS_COUNT,
 };
-
+enum Type
+{
+	FLAG,
+	ANTENNA,
+	BELT,
+	WATERPIT,
+	WORKSHOP,
+	DANGERZONE,
+	ROTATINGGEAR,
+};
 #endif

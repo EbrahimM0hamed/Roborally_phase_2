@@ -12,6 +12,7 @@
 #include "AddDangerZoneAction.h"
 #include "AddAntennaAction.h"
 #include "AddWorkshopAction.h"
+#include "SaveGridAction.h"
 /// TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -98,6 +99,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case DELETE_GAMEOBJECT:
 		pAct = new DeleteAction(this);
+		break;
+	case SAVEGRID:
+		pAct = new SaveGridAction(this);
 		break;
 	case EXIT:
 		break;
