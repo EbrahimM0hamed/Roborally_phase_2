@@ -31,7 +31,11 @@ CellPosition Belt::GetEndPosition() const
 {
 	return endCellPos;
 }
-
+void Belt::Save(ofstream &OutFile,string file)
+{
+	OutFile.open(file,ios::out);
+	OutFile<<position.GetCellNum()<<" "<<endCellPos.GetCellNum();
+}
 
 Belt::~Belt()
 {

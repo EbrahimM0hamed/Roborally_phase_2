@@ -31,7 +31,11 @@ void Antenna::Apply(Grid * pGrid, Player * pPlayer)
 	// 3- After deciding the turn of player Print a message indicating which player will play first example: "Player 1 will play first"
 
 }
-
+void Antenna::Save(ofstream &OutFile, string file)
+{
+	OutFile.open(file,ios::out);
+	OutFile<<position.GetCellNum();
+}
 
 Antenna::~Antenna()
 {
