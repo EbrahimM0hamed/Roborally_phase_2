@@ -22,6 +22,15 @@ void Workshop::Save(ofstream &OutFile,string file)
 		OutFile.open(file,ios::out);
 	OutFile<<position.GetCellNum()<<endl;
 }
+void Workshop::Load(ifstream &Infile, string file)
+{
+	if(!Infile.is_open())
+		Infile.open(file,ios::in);
+	int cellnum;
+	Infile>>cellnum;
+	CellPosition cell(cellnum);
+	position = cell;
+}
 
 Workshop::~Workshop()
 {

@@ -13,6 +13,7 @@
 #include "AddAntennaAction.h"
 #include "AddWorkshopAction.h"
 #include "SaveGridAction.h"
+#include "LoadAction.h"
 /// TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -102,6 +103,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case SAVEGRID:
 		pAct = new SaveGridAction(this);
+		break;
+	case LOAD_OPENGRID:
+		pAct = new LoadAction(this);
 		break;
 	case EXIT:
 		break;

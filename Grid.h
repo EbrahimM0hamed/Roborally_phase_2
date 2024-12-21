@@ -47,8 +47,8 @@ public:
 	void UpdatePlayerCell(Player * player, const CellPosition & newPosition); // Update the player's pCell with the CellList's Cell pointer of the "newPosition",
 	                                                                          // Clears the player's circle from the previous cell
 	    																	  // and  Draws it in the new cell
-	void SaveAll(ofstream &OutFile,string file,Type);	// Saves the GameObject parameters to the file
-
+	void SaveAll(ofstream &OutFile,string file,Type type);	// Saves the GameObject parameters to the file
+	void LoadAll(ifstream &Infile, string file,Type type);
 	// ========= Setters and Getters Functions =========
 
 	Input * GetInput() const;	// Gets a Pointer to the Input

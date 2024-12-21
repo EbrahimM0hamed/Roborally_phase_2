@@ -9,6 +9,7 @@ public:
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applys the effect of the flag
 	bool GetisClockWise() const; // Getter for the direction
 	void Save(ofstream &OutFile,string file);	// Saves the GameObject parameters to the file
+	virtual void Load(ifstream &Infile, string file);
 	virtual ~RotatingGear();
 };
 

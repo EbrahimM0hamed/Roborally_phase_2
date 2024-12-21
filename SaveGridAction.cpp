@@ -22,7 +22,7 @@ void SaveGridAction::Execute()
 {
     ReadActionParameters();
     if(!(file[file.length()]=='t' && file[file.length() - 1] == 'x' && file[file.length() - 3] == 'e' && file[file.length() - 2] == 't'))
-        file+=".txet";
+        file+=".txt";
     ofstream OutFile;
     OutFile.open(file,ios::out);
     Grid *pGrid = pManager->GetGrid();

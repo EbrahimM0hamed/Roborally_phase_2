@@ -215,6 +215,40 @@ void Grid::SaveAll(ofstream &OutFile,string file,Type type)
 	}
 }
 
+void Grid::LoadAll(ifstream &Infile, string file,Type type)
+{
+	switch (type)
+	{
+	case FLAG:
+		{Flag *pFlag=new Flag(CellPosition());
+		pFlag->Load(Infile,file);}
+		break;
+	case BELT:
+		{Belt *pBelt=new Belt(CellPosition(),CellPosition());
+		pBelt->Load(Infile,file);}
+		break;
+	case ANTENNA:
+		{Antenna *pAntenna=new Antenna(CellPosition());
+		pAntenna->Load(Infile,file);}
+		break;
+	case ROTATINGGEAR:
+		{RotatingGear *pRotatingGear=new RotatingGear(CellPosition(),true);
+		pRotatingGear->Load(Infile,file);}
+		break;
+	case WORKSHOP:
+		{Workshop *pWorkshop=new Workshop(CellPosition());
+		pWorkshop->Load(Infile,file);}
+		break;
+	case WATERPIT:
+		{WaterPit *pWaterPit=new WaterPit(CellPosition());
+		pWaterPit->Load(Infile,file);}
+		break;
+	case DANGERZONE:
+		{DangerZone *pDangerZone=new DangerZone(CellPosition());
+		pDangerZone->Load(Infile,file);}
+		break;
+	}
+}
 // ========= Setters and Getters Functions =========
 
 

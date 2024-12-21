@@ -185,6 +185,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="LoadAction.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="PasteAction.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="LoadAction.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="PasteAction.h" />
     <ClInclude Include="Player.h" />

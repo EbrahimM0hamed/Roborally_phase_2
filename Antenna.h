@@ -8,7 +8,7 @@ public:
 
 	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applys the effect of the antenna by deciding the players turns
 	virtual void Save(ofstream &OutFile,string file);	// Saves the GameObject parameters to the file
-
+	virtual void Load(ifstream &Infile, string file);	// Loads and Reads the GameObject parameters from the file
 
 	virtual ~Antenna();
 };
