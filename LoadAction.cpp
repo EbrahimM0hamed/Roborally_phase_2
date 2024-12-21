@@ -13,7 +13,7 @@ void LoadAction::ReadActionParameters()
 
     // Read the parameter
     pOut->PrintMessage("New Load: Please Enter the File Name ...");
-    file=pIn->GetSrting(pOut)+"txt";
+    file=pIn->GetSrting(pOut)+".txt";
     // Clear messages
     pOut->ClearStatusBar();
 }

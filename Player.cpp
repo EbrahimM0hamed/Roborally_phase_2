@@ -73,54 +73,157 @@ void Player::Move(Grid * pGrid, Command moveCommands[])
 	position=pCell->GetCellPosition();
 	for (int i = 0;i < COMMANDS_COUNT;i++)
 	{
-		if (moveCommands[i]==MOVE_FORWARD_ONE_STEP)
-		{
-			position.AddCellNum(1, RIGHT);
+		if(currDirection==RIGHT){
+			if (moveCommands[i]==MOVE_FORWARD_ONE_STEP)
+			{
+				position.AddCellNum(1, RIGHT);
+			}
+			else if (moveCommands[i] == MOVE_BACKWARD_ONE_STEP)
+			{
+				position.AddCellNum(1, LEFT);
+			}
+			else if (moveCommands[i] == MOVE_FORWARD_TWO_STEPS)
+			{
+				position.AddCellNum(2, RIGHT);
+			}
+			else if (moveCommands[i] == MOVE_BACKWARD_TWO_STEPS)
+			{
+				position.AddCellNum(2, LEFT);
+			}
+			else if (moveCommands[i] == MOVE_FORWARD_THREE_STEPS)
+			{
+				position.AddCellNum(3, RIGHT);
+			}
+			else if (moveCommands[i] == MOVE_BACKWARD_THREE_STEPS)
+			{
+				position.AddCellNum(3, LEFT);
+			}
+			else if (moveCommands[i] == ROTATE_CLOCKWISE)
+			{
+				currDirection = DOWN;
+			}
+			else if (moveCommands[i] == ROTATE_COUNTERCLOCKWISE)
+			{
+				currDirection = UP;
+			}
 		}
-		else if (moveCommands[i] == MOVE_BACKWARD_ONE_STEP)
-		{
-			position.AddCellNum(1, LEFT);
+		else if(currDirection==LEFT){
+			if (moveCommands[i]==MOVE_FORWARD_ONE_STEP)
+			{
+				position.AddCellNum(1, LEFT);
+			}
+			else if (moveCommands[i] == MOVE_BACKWARD_ONE_STEP)
+			{
+				position.AddCellNum(1, RIGHT);
+			}
+			else if (moveCommands[i] == MOVE_FORWARD_TWO_STEPS)
+			{
+				position.AddCellNum(2, LEFT);
+			}
+			else if (moveCommands[i] == MOVE_BACKWARD_TWO_STEPS)
+			{
+				position.AddCellNum(2, RIGHT);
+			}
+			else if (moveCommands[i] == MOVE_FORWARD_THREE_STEPS)
+			{
+				position.AddCellNum(3, LEFT);
+			}
+			else if (moveCommands[i] == MOVE_BACKWARD_THREE_STEPS)
+			{
+				position.AddCellNum(3, RIGHT);
+			}
+			else if (moveCommands[i] == ROTATE_CLOCKWISE)
+			{
+				currDirection = UP;
+			}
+			else if (moveCommands[i] == ROTATE_COUNTERCLOCKWISE)
+			{
+				currDirection = DOWN;
+			}
 		}
-		else if (moveCommands[i] == MOVE_FORWARD_TWO_STEPS)
-		{
-			position.AddCellNum(2, RIGHT);
+		else if(currDirection==UP){
+			if (moveCommands[i]==MOVE_FORWARD_ONE_STEP)
+			{
+				position.AddCellNum(1, UP);
+			}
+			else if (moveCommands[i] == MOVE_BACKWARD_ONE_STEP)
+			{
+				position.AddCellNum(1, DOWN);
+			}
+			else if (moveCommands[i] == MOVE_FORWARD_TWO_STEPS)
+			{
+				position.AddCellNum(2, UP);
+			}
+			else if (moveCommands[i] == MOVE_BACKWARD_TWO_STEPS)
+			{
+				position.AddCellNum(2, DOWN);
+			}
+			else if (moveCommands[i] == MOVE_FORWARD_THREE_STEPS)
+			{
+				position.AddCellNum(3, UP);
+			}
+			else if (moveCommands[i] == MOVE_BACKWARD_THREE_STEPS)
+			{
+				position.AddCellNum(3, DOWN);
+			}
+			else if (moveCommands[i] == ROTATE_CLOCKWISE)
+			{
+				currDirection = RIGHT;
+			}
+			else if (moveCommands[i] == ROTATE_COUNTERCLOCKWISE)
+			{
+				currDirection = LEFT;
+			}
 		}
-		else if (moveCommands[i] == MOVE_BACKWARD_TWO_STEPS)
-		{
-			position.AddCellNum(2, LEFT);
+		else if(currDirection==DOWN){
+			if (moveCommands[i]==MOVE_FORWARD_ONE_STEP)
+			{
+				position.AddCellNum(1, DOWN);
+			}
+			else if (moveCommands[i] == MOVE_BACKWARD_ONE_STEP)
+			{
+				position.AddCellNum(1, UP);
+			}
+			else if (moveCommands[i] == MOVE_FORWARD_TWO_STEPS)
+			{
+				position.AddCellNum(2, DOWN);
+			}
+			else if (moveCommands[i] == MOVE_BACKWARD_TWO_STEPS)
+			{
+				position.AddCellNum(2, UP);
+			}
+			else if (moveCommands[i] == MOVE_FORWARD_THREE_STEPS)
+			{
+				position.AddCellNum(3, DOWN);
+			}
+			else if (moveCommands[i] == MOVE_BACKWARD_THREE_STEPS)
+			{
+				position.AddCellNum(3, UP);
+			}
+			else if (moveCommands[i] == ROTATE_CLOCKWISE)
+			{
+				currDirection = LEFT;
+			}
+			else if (moveCommands[i] == ROTATE_COUNTERCLOCKWISE)
+			{
+				currDirection = RIGHT;
+			}
 		}
-		else if (moveCommands[i] == MOVE_FORWARD_THREE_STEPS)
-		{
-			position.AddCellNum(3, RIGHT);
-		}
-		else if (moveCommands[i] == MOVE_BACKWARD_THREE_STEPS)
-		{
-			position.AddCellNum(3, LEFT);
-		}
-		else if (moveCommands[i] == ROTATE_CLOCKWISE)
-		{
-			currDirection = (Direction)((currDirection + 1) % 4);
-		}
-		else if (moveCommands[i] == ROTATE_COUNTERCLOCKWISE)
-		{
-			currDirection = (Direction)((currDirection + 3) % 4);
-		}
-
-	}
 	
-	if (position.IsValidCell() == true)
-	{
-		pGrid->UpdatePlayerCell(this , position);
-	}
-	
-	pGrid->PrintErrorMessage("Click anywhere to execute the next command.");
-	int x = 0, y = 0;
-	pGrid->GetInput()->GetPointClicked(x,y);
+		if (position.IsValidCell() == true)
+		{
+			pGrid->UpdatePlayerCell(this , position);
+		}
+		
+		pGrid->PrintErrorMessage("Click anywhere to execute the next command.");
+		int x = 0, y = 0;
+		pGrid->GetInput()->GetPointClicked(x,y);
 
-	Cell* fCell = pGrid->GetCurrentPlayer()->GetCell();
-	if (fCell->GetGameObject())
-	{
-		fCell->GetGameObject()->Apply(pGrid, this);
+		Cell* fCell = pGrid->GetCurrentPlayer()->GetCell();
+		if (fCell->GetGameObject())
+		{
+			fCell->GetGameObject()->Apply(pGrid, this);
+		}
 	}
 	//not ended yet
 }
@@ -129,7 +232,21 @@ void Player::AppendPlayerInfo(string & playersInfo) const
 {
 	// TODO: Modify the Info as needed
 	playersInfo += "P" + to_string(playerNum) + "(" ;
-	playersInfo += to_string(currDirection) + ", ";
+	switch (currDirection)
+	{
+	case RIGHT:
+		playersInfo += "RIGHT, ";
+		break;
+	case LEFT:
+		playersInfo += "LEFT, ";
+		break;
+	case UP:
+		playersInfo += "UP, ";
+		break;
+	case DOWN:
+		playersInfo += "DOWN, ";
+		break;
+	}
 	playersInfo += to_string(health) + ")";
 
 }
