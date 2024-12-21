@@ -22,9 +22,10 @@ void Flag::Apply(Grid* pGrid, Player* pPlayer)
 }
 void Flag::Save(ofstream &OutFile,string file)
 {
-	OutFile.open(file,ios::out);
-	OutFile<<left<<setw(10)<<position.GetCellNum();
-}
+	if(!OutFile.is_open())
+		OutFile.open(file,ios::out);
+	OutFile<<position.GetCellNum()<<endl;
+}	
 
 Flag::~Flag()
 {
