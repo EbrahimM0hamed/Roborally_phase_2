@@ -1,7 +1,6 @@
 #pragma once
 #include "GameObject.h"
-class Workshop :
-	public GameObject
+class Workshop : public GameObject
 {
 public:
 	Workshop(const CellPosition & workshopPosition);

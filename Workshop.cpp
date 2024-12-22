@@ -1,4 +1,7 @@
 #include "Workshop.h"
+#include "Output.h" 
+#include "Grid.h"
+#include "Player.h"  
 
 
 
@@ -15,6 +18,37 @@ void Workshop::Draw(Output * pOut) const
 
 void Workshop::Apply(Grid * pGrid, Player * pPlayer)
 {
+	pPlayer->SetHealth(10);
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
+	pOut->PrintMessage("You reached a workshop! To Purchase additional equipment enter : 1 Double Laser - 2 Extended Memory - 3 Toolkit - 4 Hack Device)");
+	int choice = pIn->GetInteger(pOut);
+	if (choice == 1)
+	{
+		pOut->PrintMessage("You purchased a Double Laser");
+		//
+	}
+	else if (choice == 2)
+	{
+		pOut->PrintMessage("You purchased an Extended Memory");
+		//
+	}
+	else if (choice == 3)
+	{
+		pOut->PrintMessage("You purchased a Toolkit");
+		//
+	}
+	else if (choice == 4)
+	{
+		pOut->PrintMessage("You purchased a Hack Device");
+		//
+	}
+	else
+	{
+		pOut->PrintMessage("Invalid choice");
+	}
+	pOut->ClearStatusBar();
+	// not ended yet
 }
 void Workshop::Save(ofstream &OutFile,string file)
 {
