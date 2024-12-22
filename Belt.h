@@ -1,5 +1,7 @@
 #pragma once
 #include"GameObject.h"
+#include "Player.h"
+
 class Belt: public GameObject
 {
 	// Note: the "position" data member inherited from the GameObject class is used as the belt's "Start Cell Position"

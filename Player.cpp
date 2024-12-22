@@ -25,11 +25,16 @@ void Player::SetHealth(int h)
 {
 	this->health = h;
 	///TODO: Do any needed validations
+
 }
 
 int Player::GetHealth()
 {
 	return this->health;
+}
+Direction Player::GetCurrDirection()
+{
+	return this->currDirection;
 }
 
 // ====== Drawing Functions ======

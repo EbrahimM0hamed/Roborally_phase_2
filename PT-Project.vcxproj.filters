@@ -334,9 +334,6 @@
     <ClInclude Include="WaterPit.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="DangerZone.h">
-      <Filter>GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="Workshop.h">
       <Filter>GameObjects</Filter>
     </ClInclude>
@@ -375,6 +372,9 @@
     </ClInclude>
     <ClInclude Include="AddWorkshopAction.h">
       <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="DangerZone.h">
+      <Filter>CMUgraphicsLib</Filter>
     </ClInclude>
     <ClInclude Include="SaveGridAction.h">
       <Filter>Actions</Filter>

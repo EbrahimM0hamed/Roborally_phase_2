@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include"Player.h"
 class WaterPit:public GameObject
 {
 public:

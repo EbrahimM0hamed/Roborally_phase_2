@@ -399,7 +399,10 @@ Belt * Grid::GetNextBelt(const CellPosition & position)
 
 			///TODO: Check if CellList[i][j] has a belt, if yes return it
 			
+			
 
+
+				;
 		}
 		startH = 0; // because in the next above rows, we will search from the first left cell (hCell = 0) to the right
 	}
