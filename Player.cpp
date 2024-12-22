@@ -239,7 +239,7 @@ void Player::Move(Grid * pGrid, Command moveCommands[])
 			fCell->GetGameObject()->Apply(pGrid, this);
 		}
 	}
-	//not ended yet
+	
 }
 
 void Player::AppendPlayerInfo(string & playersInfo) const

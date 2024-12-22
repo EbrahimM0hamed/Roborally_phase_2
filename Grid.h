@@ -20,7 +20,7 @@ class Grid
 	Cell * CellList[NumVerticalCells][NumHorizontalCells];  // An array of "Pointers" to All Cells of the Grid Cells
 															// We make it array of pointers not objects because
 															// there are NO default constructor for class Cell
-
+	CellPosition AntennaPosition;
 	Player* PlayerList[MaxPlayerCount]; // An array of "Pointers" to the Players of the Game (MaxPlayerCount Players)
 	int currPlayerNumber;   // The player number that has the turn to play 
 							// currPlayerNumber is: from 0 to MaxPlayerCount - 1
@@ -59,7 +59,7 @@ public:
 	GameObject * GetGameObject(CellPosition pos) const;	
 	void SetEndGame(bool endGame);	 // A setter for endGame data member
 	bool GetEndGame() const;		 // A getter for endGame data member
-
+	int GetDistanceFromAntenna(CellPosition & pos);
 	void AdvanceCurrentPlayer();     // Increments the currPlayerNum and if reaches MaxPlayerCount reset to 0 (using %)
 	bool GetHasFlag();
 	bool GetHasAntenna();

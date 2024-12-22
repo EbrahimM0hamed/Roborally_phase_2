@@ -1,5 +1,5 @@
 #include "Grid.h"
-
+#include <cstdlib>
 #include "Cell.h"
 #include "GameObject.h"
 #include "Belt.h"
@@ -55,8 +55,10 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 		GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if( pPrevObject)  // the cell already contains a game object
 			return false; // do NOT add and return false
-		if(dynamic_cast<Antenna *>(pNewObject))
+		if(dynamic_cast<Antenna *>(pNewObject)){
 			hasAntenna=true;
+			AntennaPosition=pNewObject->GetPosition();
+		}
 		if(Belt* pBelt=dynamic_cast<Belt *>(pNewObject)){
 			if(!checkBeltEnd(pos))
 				return false;
@@ -301,6 +303,10 @@ bool Grid::GetEndGame() const
 	return endGame;
 }
 
+int Grid::GetDistanceFromAntenna(CellPosition & pos)
+{
+	return abs(pos.HCell()-AntennaPosition.HCell())+abs(pos.VCell()-AntennaPosition.VCell());
+}
 void Grid::AdvanceCurrentPlayer()
 {
 	currPlayerNumber = (currPlayerNumber + 1) % MaxPlayerCount; // this generates value from 0 to MaxPlayerCount - 1
