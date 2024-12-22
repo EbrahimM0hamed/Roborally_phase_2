@@ -27,6 +27,10 @@ void Player::SetHealth(int h)
 	///TODO: Do any needed validations
 
 }
+void Player::SetCurrDirection(Direction direction)
+{
+	 this->currDirection=direction;
+}
 
 int Player::GetHealth()
 {
