@@ -133,11 +133,18 @@ ActionType Input::GetUserAction() const
 				case 	ITM_NEW_GAME:return	NEW_GAME;
 				case 	ITM_SWITCH_TO_DESIGN_MODE:return TO_DESIGN_MODE;
 				case 	ITM_EXIT_PLAY:return EXIT;
-					
+				
+				default: return EMPTY;
 			}
 		}
 		
+		if ( (y >= UI.ToolBarHeight) && (y < UI.height - UI.StatusBarHeight))
+		{
+			return GRID_AREA;	
+		}
 
+			// [3] User clicks on the status bar
+		return STATUS;
 
 
 

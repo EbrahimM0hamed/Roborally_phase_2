@@ -29,6 +29,14 @@ Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pI
 		PlayerList[i]->Draw(pOut); // initially draw players in the first cell
 	}
 
+	for(int i=0;i<10;i++)
+	{
+		avilableMoveCommands[i]=NO_COMMAND;
+	}
+	for(int i=0;i<5;i++)
+	{
+		saveedMoveCommands[i]=NO_COMMAND;
+	}
 	// Initialize currPlayerNumber with 0 (first player)
 	currPlayerNumber = 0; // start with the first player
 
@@ -50,7 +58,7 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 {
 	// Get the cell position of pNewObject
 	CellPosition pos = pNewObject->GetPosition();
-	if (pos.IsValidCell() &&!(pos.GetCellNum()==1) &&!(pos.GetCellNum()==55)) // Check if valid position
+	if (pos.IsValidCell() &&!(pos.GetCellNum()==1) &&!(pos.GetCellNum()==55) && checkBeltEnd(pos)) // Check if valid position
 	{
 		GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if( pPrevObject)  // the cell already contains a game object
