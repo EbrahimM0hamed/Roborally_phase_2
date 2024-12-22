@@ -1,4 +1,5 @@
 #include "LoadAction.h"
+#include "Cellposition.h"
 LoadAction::LoadAction(ApplicationManager *pApp) : Action(pApp)
 {
     // Initializes the pManager pointer of Action with the passed pointer
@@ -19,13 +20,17 @@ void LoadAction::ReadActionParameters()
 }
 void LoadAction::Execute()
 {
-    ReadActionParameters();
-    // if(!(file[file.length()]=='t' && file[file.length() - 1] == 'x' && file[file.length() - 3] == 'e' && file[file.length() - 2] == 't'))
-    //     file+=".txet";
-    ifstream Infile(file,ios::in);
-    if(!Infile.is_open())
-        Infile.open(file,ios::in);
     Grid *pGrid = pManager->GetGrid();
+    Output *pOut = pGrid->GetOutput();
+    for(int i=1;i<56;i++){
+        pGrid->RemoveObjectFromCell(CellPosition(i));
+    }
+    ReadActionParameters();
+    ifstream Infile(file,ios::in);
+    if(!Infile.is_open()){
+        pOut->PrintMessage("Can't find file with this file name, loading failed.");
+        Infile.open(file,ios::in);
+    }else{
     // Load the grid
     pGrid->LoadAll(Infile,file,FLAG);
     pGrid->LoadAll(Infile,file,BELT);
@@ -36,6 +41,8 @@ void LoadAction::Execute()
     pGrid->LoadAll(Infile,file,DANGERZONE);
     // Close the file
     Infile.close();
+    pOut->PrintMessage("Loading done successfully.");
+    }
 }
 LoadAction::~LoadAction()
 {
