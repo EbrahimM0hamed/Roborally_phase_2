@@ -23,7 +23,7 @@ void DangerZone::Apply(Grid * pGrid, Player * pPlayer)
 	pGrid->PrintErrorMessage("You have reached a danger zone. Click to continue ...");
 	pIn->GetCellClicked();
 	// 2- Apply the danger zone's effect by reducing the health of the player by 1 
-	pPlayer->SetHealth(1);
+	pPlayer->reduceHealth(1);
 	// 3- Update the players info which is displayed (check Grid class and decide which function to use)
 	pGrid->UpdateInterface();
 }

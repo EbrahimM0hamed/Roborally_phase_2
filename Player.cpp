@@ -32,6 +32,11 @@ int Player::GetHealth()
 {
 	return this->health;
 }
+
+void Player::reduceHealth(int h)
+{
+	this->health -= h;
+}
 Direction Player::GetCurrDirection()
 {
 	return this->currDirection;
