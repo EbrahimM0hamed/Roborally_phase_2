@@ -26,7 +26,7 @@ void Belt::Apply(Grid* pGrid, Player* pPlayer)
 
 
 	// 2- Apply the belt's effect by moving the player to the endCellPos
-	pPlayer->Move()
+	
 	//    Review the "pGrid" functions and decide which function can be used for that
 }
 CellPosition Belt::GetEndPosition() const

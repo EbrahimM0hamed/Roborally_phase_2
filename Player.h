@@ -5,10 +5,10 @@
 #include "Output.h"
 class Player
 {
-	Cell * pCell;		   // pointer to the current Cell of the player
-	Output * pOut;
+	Cell* pCell;		   // pointer to the current Cell of the player
+	Output* pOut;
 	const int playerNum;   // the player number (from 0 to MaxPlayerCount-1)
-	                       // player number does NOT change after construction (const.)
+	// player number does NOT change after construction (const.)
 
 	int stepCount;		   // step count which is the same as his cellNum: from 1 to NumVerticalCells*NumHorizontalCells
 	Direction currDirection; // Current Direction of the player
@@ -18,18 +18,19 @@ class Player
 	// carried consumables
 	// carried laser type (default, double laser)
 	// isHacked (to indicate whether the player is blocked to play the round, as a result of the opponent using a hacking device)
-	
-	
+
+
 public:
 
-	Player(Cell * pCell, int playerNum); // Constructor making any needed initializations
+	Player(Cell* pCell, int playerNum); // Constructor making any needed initializations
 
 	// ====== Setters and Getters ======
 
-	void SetCell(Cell * cell);		// A setter for the pCell
+	void SetCell(Cell* cell);		// A setter for the pCell
 	Cell* GetCell() const;			// A getter for the pCell
 
 	void SetHealth(int h);			// A setter for the health points
+	void SetCurrDirection(Direction direction);
 	int GetHealth();				// A getter for the health points
 	void reduceHealth(int h);		// A function to reduce the health points by h
 	Direction GetCurrDirection();
@@ -44,12 +45,11 @@ public:
 
 	// ====== Game Functions ======
 
-	void Move(Grid * pGrid, Command moveCommands[]);	// Moves the Player with the passed move command
-														// and Applies the Game Object's effect (if any) of the end reached cell 
-														// for example, if the end cell contains a belt, take it
-	
-	void AppendPlayerInfo(string & playersInfo) const; // Appends player's info to the input string, 
-	                                                   // for example: P0(Direction, health)
+	void Move(Grid* pGrid, Command moveCommands[]);	// Moves the Player with the passed move command
+	// and Applies the Game Object's effect (if any) of the end reached cell 
+	// for example, if the end cell contains a belt, take it
+
+	void AppendPlayerInfo(string& playersInfo) const; // Appends player's info to the input string, 
+	// for example: P0(Direction, health)
 
 };
-
