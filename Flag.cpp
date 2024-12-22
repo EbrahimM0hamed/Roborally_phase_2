@@ -22,6 +22,21 @@ void Flag::Apply(Grid* pGrid, Player* pPlayer)
 	//Review the "pGrid" functions and decide which function can be used for that
 	    pGrid->SetEndGame(true);
 }
+void Flag::Save(ofstream &OutFile,string file)
+{
+	if(!OutFile.is_open())
+		OutFile.open(file,ios::out);
+	OutFile<<position.GetCellNum()<<endl;
+}	
+void Flag::Load(ifstream &Infile, string file)
+{
+	if(!Infile.is_open())
+		Infile.open(file,ios::in);
+	int cellnum;
+	Infile>>cellnum;
+	CellPosition cell(cellnum);
+	position = cell;
+}
 
 Flag::~Flag()
 {

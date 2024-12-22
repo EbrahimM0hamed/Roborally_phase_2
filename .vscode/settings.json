@@ -5,6 +5,12 @@
         "xmemory": "cpp",
         "xstring": "cpp",
         "xtr1common": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "iosfwd": "cpp",
+        "fstream": "cpp",
+        "xlocmes": "cpp",
+        "ostream": "cpp",
+        "xiosbase": "cpp",
+        "string": "cpp"
     }
 }
