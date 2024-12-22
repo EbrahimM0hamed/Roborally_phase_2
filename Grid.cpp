@@ -6,6 +6,10 @@
 #include "Player.h"
 #include "Flag.h"
 #include "Antenna.h"
+#include "RotatingGear.h"
+#include "Workshop.h"
+#include "WaterPit.h"
+#include "DangerZone.h"
 
 Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pIn, pOut
 {
@@ -46,7 +50,7 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 {
 	// Get the cell position of pNewObject
 	CellPosition pos = pNewObject->GetPosition();
-	if (pos.IsValidCell()) // Check if valid position
+	if (pos.IsValidCell() &&!(pos.GetCellNum()==1) &&!(pos.GetCellNum()==55)) // Check if valid position
 	{
 		GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if( pPrevObject)  // the cell already contains a game object
@@ -79,9 +83,6 @@ bool Grid::RemoveObjectFromCell(const CellPosition & pos)
 {
 	if (pos.IsValidCell()) // Check if valid position
 	{
-		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-		// if(Belt *pBelt=dynamic_cast<Belt *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
-		// 	CellList[pBelt->GetEndPosition().VCell()][pBelt->GetEndPosition().HCell()]->SetGameObject(NULL);
 		if(dynamic_cast<Flag *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
 			hasFlag=false;
 		if(dynamic_cast<Antenna *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
@@ -106,7 +107,166 @@ void Grid::UpdatePlayerCell(Player * player, const CellPosition & newPosition)
 	player->Draw(pOut);
 }
 
+void Grid::SaveAll(ofstream &OutFile,string file,Type type)
+{
+	int flagNum=0,beltNum=0,antennaNum=0,rotatingGearNum=0,workShopNum=0,waterPitnum=0,dangerZonenum=0;
+	for (int i = NumVerticalCells-1; i >= 0 ; i--) 
+	{
+		for (int j = 0; j < NumHorizontalCells; j++) 
+		{
+			if (dynamic_cast<Flag*>(CellList[i][j]->GetGameObject()))
+				flagNum++;
+			if (dynamic_cast<Belt*>(CellList[i][j]->GetGameObject()))
+				beltNum++;
+			if (dynamic_cast<RotatingGear*>(CellList[i][j]->GetGameObject()))
+				rotatingGearNum++;
+			if (dynamic_cast<Antenna*>(CellList[i][j]->GetGameObject()))
+				antennaNum++;
+			if (dynamic_cast<WaterPit*>(CellList[i][j]->GetGameObject()))
+				waterPitnum++;
+			if (dynamic_cast<DangerZone*>(CellList[i][j]->GetGameObject()))
+				dangerZonenum++;
+			if (dynamic_cast<Workshop*>(CellList[i][j]->GetGameObject()))
+				workShopNum++;
+		}
+	}
+	switch (type)
+	{
+	case FLAG:
+		OutFile<<"Flag Number: "<<flagNum<<endl;
+		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
+		{
+		for (int j = 0; j < NumHorizontalCells; j++) 
+			{
+				if (Flag *pFlag=dynamic_cast<Flag*>(CellList[i][j]->GetGameObject()))
+					pFlag->Save(OutFile,file);
+			}
+		}
+		break;
+	case BELT:
+		OutFile<<"Belt Number: "<<beltNum<<endl;
+		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
+		{
+			for (int j = 0; j < NumHorizontalCells; j++) 
+			{
+				if (Belt *pBelt=dynamic_cast<Belt*>(CellList[i][j]->GetGameObject()))
+					pBelt->Save(OutFile,file);
+			}
+		}
+		break;
+	case ANTENNA:
+		OutFile<<"Antenna Number: "<<antennaNum<<endl;
+		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
+		{
+			for (int j = 0; j < NumHorizontalCells; j++) 
+			{
+				if (Antenna *pAntenna=dynamic_cast<Antenna*>(CellList[i][j]->GetGameObject()))
+					pAntenna->Save(OutFile,file);
+			}
+		}
+		break;
+	case ROTATINGGEAR:
+		OutFile<<"RotatingGear Number: "<<rotatingGearNum<<endl;
+		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
+		{
+			for (int j = 0; j < NumHorizontalCells; j++) 
+			{
+				if (RotatingGear *pRotatingGear=dynamic_cast<RotatingGear*>(CellList[i][j]->GetGameObject()))
+					pRotatingGear->Save(OutFile,file);
+			}
+		}
+		break;
+	case WORKSHOP:
+		OutFile<<"Workshop Number: "<<workShopNum<<endl;
+		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
+		{
+			for (int j = 0; j < NumHorizontalCells; j++) 
+			{
+				if (Workshop *pWorkshop=dynamic_cast<Workshop*>(CellList[i][j]->GetGameObject()))
+					pWorkshop->Save(OutFile,file);
+			}
+		}
+		break;
+	case WATERPIT:
+		OutFile<<"WaterPit Number: "<<waterPitnum<<endl;
+		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
+		{
+			for (int j = 0; j < NumHorizontalCells; j++) 
+			{
+				if (WaterPit *pWaterPit=dynamic_cast<WaterPit*>(CellList[i][j]->GetGameObject()))
+					pWaterPit->Save(OutFile,file);
+			}
+		}
+		break;
+	case DANGERZONE:
+		OutFile<<"DangerZone Number: "<<dangerZonenum<<endl;
+		for (int i = NumVerticalCells-1; i >= 0 ; i--) 
+		{
+			for (int j = 0; j < NumHorizontalCells; j++) 
+			{
+				if (DangerZone *pDangerZone=dynamic_cast<DangerZone*>(CellList[i][j]->GetGameObject()))
+					pDangerZone->Save(OutFile,file);
+			}
+		}
+		break;
+	}
+}
 
+void Grid::LoadAll(ifstream &Infile, string file,Type type)
+{
+	switch (type)
+	{
+	case FLAG:
+		{
+			Flag* pFlag = new Flag(CellPosition());
+			pFlag->Load(Infile, file);
+			AddObjectToCell(pFlag);
+		}
+		break;
+	case BELT:
+		{
+			Belt* pBelt = new Belt(CellPosition(),CellPosition());
+			pBelt->Load(Infile, file);
+			AddObjectToCell(pBelt);
+		}
+		break;
+	case ANTENNA:
+		{
+			Antenna* pAntenna = new Antenna(CellPosition());
+			pAntenna->Load(Infile, file);
+			AddObjectToCell(pAntenna);
+		}
+		break;
+	case ROTATINGGEAR:
+		{
+			RotatingGear* pRotatingGear = new RotatingGear(CellPosition(),true);
+			pRotatingGear->Load(Infile, file);
+			AddObjectToCell(pRotatingGear);
+		}
+		break;
+	case WORKSHOP:
+		{
+			Workshop* pWorkshop = new Workshop(CellPosition());
+			pWorkshop->Load(Infile, file);
+			AddObjectToCell(pWorkshop);
+		}
+		break;
+	case WATERPIT:
+		{
+			WaterPit* pWaterPit = new WaterPit(CellPosition());
+			pWaterPit->Load(Infile, file);
+			AddObjectToCell(pWaterPit);
+		}
+		break;
+	case DANGERZONE:
+		{
+			DangerZone* pDangerZone = new DangerZone(CellPosition());
+			pDangerZone->Load(Infile, file);
+			AddObjectToCell(pDangerZone);
+		}
+		break;
+	}
+}
 // ========= Setters and Getters Functions =========
 
 

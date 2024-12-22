@@ -36,6 +36,21 @@ void WaterPit::Apply(Grid * pGrid, Player * pPlayer)
 			pGrid->UpdateInterface();
 
 }
+void WaterPit::Save(ofstream &OutFile,string file)
+{
+	if(!OutFile.is_open())
+		OutFile.open(file,ios::out);
+	OutFile<<position.GetCellNum()<<endl;
+}
+void WaterPit::Load(ifstream &Infile, string file)
+{
+	if(!Infile.is_open())
+		Infile.open(file,ios::in);
+	int cellnum;
+	Infile>>cellnum;
+	CellPosition cell(cellnum);
+	position = cell;
+}
 
 
 WaterPit::~WaterPit()
