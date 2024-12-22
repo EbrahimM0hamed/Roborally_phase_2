@@ -13,6 +13,7 @@ void SwichToDesignMode::Execute()
 {
     Grid* pGrid = pManager->GetGrid();
 	Output* pOut = pGrid->GetOutput();
+    pOut->ClearCommandsBar();
     pOut->CreateDesignModeToolBar();
 }
 
