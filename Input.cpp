@@ -132,7 +132,7 @@ ActionType Input::GetUserAction() const
 				case 	ITM_USE_CONSUMABLE:return USE_CONSUMABLE;
 				case 	ITM_NEW_GAME:return	NEW_GAME;
 				case 	ITM_SWITCH_TO_DESIGN_MODE:return TO_DESIGN_MODE;
-				case 	ITM_EXIT_PLAY:return EXIT_PLAY;
+				case 	ITM_EXIT_PLAY:return EXIT;
 					
 			}
 		}

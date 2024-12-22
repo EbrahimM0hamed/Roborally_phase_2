@@ -14,6 +14,8 @@
 #include "AddWorkshopAction.h"
 #include "SaveGridAction.h"
 #include "LoadAction.h"
+#include "SwichToPlayMode.h"
+#include "SwichToDesignMode.h"
 /// TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -111,11 +113,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case TO_PLAY_MODE:				   // TODO:
-		pOut->CreatePlayModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new SwichToPlayMode(this); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
 	case TO_DESIGN_MODE:				 // TODO:
-		pOut->CreateDesignModeToolBar(); // temporary till you made its action class (CHANGE THIS LATTER)
+		pAct = new SwichToDesignMode(this); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 
 		/// TODO: Add a case for EACH Action type in the Design mode or Play mode

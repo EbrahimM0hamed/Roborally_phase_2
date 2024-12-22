@@ -50,7 +50,7 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 {
 	// Get the cell position of pNewObject
 	CellPosition pos = pNewObject->GetPosition();
-	if (pos.IsValidCell()) // Check if valid position
+	if (pos.IsValidCell() &&!(pos.GetCellNum()==1) &&!(pos.GetCellNum()==55)) // Check if valid position
 	{
 		GameObject * pPrevObject = CellList[pos.VCell()][pos.HCell()]->GetGameObject();
 		if( pPrevObject)  // the cell already contains a game object
@@ -83,9 +83,6 @@ bool Grid::RemoveObjectFromCell(const CellPosition & pos)
 {
 	if (pos.IsValidCell()) // Check if valid position
 	{
-		// Note: you can deallocate the object here before setting the pointer to null if it is needed
-		// if(Belt *pBelt=dynamic_cast<Belt *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
-		// 	CellList[pBelt->GetEndPosition().VCell()][pBelt->GetEndPosition().HCell()]->SetGameObject(NULL);
 		if(dynamic_cast<Flag *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))
 			hasFlag=false;
 		if(dynamic_cast<Antenna *>(CellList[pos.VCell()][pos.HCell()]->GetGameObject()))

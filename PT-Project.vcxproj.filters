@@ -223,6 +223,12 @@
     <ClCompile Include="LoadAction.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="SwichToDesignMode.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="SwichToPlayMode.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -374,6 +380,12 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="LoadAction.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="SwichToDesignMode.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="SwichToPlayMode.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>

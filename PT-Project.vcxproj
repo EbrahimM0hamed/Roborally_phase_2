@@ -192,6 +192,8 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RotatingGear.cpp" />
     <ClCompile Include="SaveGridAction.cpp" />
+    <ClCompile Include="SwichToDesignMode.cpp" />
+    <ClCompile Include="SwichToPlayMode.cpp" />
     <ClCompile Include="WaterPit.cpp" />
     <ClCompile Include="Workshop.cpp" />
   </ItemGroup>
@@ -244,6 +246,8 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="RotatingGear.h" />
     <ClInclude Include="SaveGridAction.h" />
+    <ClInclude Include="SwichToDesignMode.h" />
+    <ClInclude Include="SwichToPlayMode.h" />
     <ClInclude Include="UI_Info.h" />
     <ClInclude Include="WaterPit.h" />
     <ClInclude Include="Workshop.h" />
