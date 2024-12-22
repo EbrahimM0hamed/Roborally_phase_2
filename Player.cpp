@@ -83,34 +83,34 @@ void Player::Move(Grid * pGrid, Command moveCommands[])
 	// - Use the CellPosition class to help you calculate the destination cell using the current cell
 	// - Use the Grid class to update pCell
 	// - Don't forget to apply game objects at the final destination cell and check for game ending
-	CellPosition position;
-	position=pCell->GetCellPosition();
+	CellPosition *position;
+	position=&pCell->GetCellPosition();
 	for (int i = 0;i < COMMANDS_COUNT;i++)
 	{
 		if(currDirection==RIGHT){
 			if (moveCommands[i]==MOVE_FORWARD_ONE_STEP)
 			{
-				position.AddCellNum(1, RIGHT);
+				position->AddCellNum(1, RIGHT);
 			}
 			else if (moveCommands[i] == MOVE_BACKWARD_ONE_STEP)
 			{
-				position.AddCellNum(1, LEFT);
+				position->AddCellNum(1, LEFT);
 			}
 			else if (moveCommands[i] == MOVE_FORWARD_TWO_STEPS)
 			{
-				position.AddCellNum(2, RIGHT);
+				position->AddCellNum(2, RIGHT);
 			}
 			else if (moveCommands[i] == MOVE_BACKWARD_TWO_STEPS)
 			{
-				position.AddCellNum(2, LEFT);
+				position->AddCellNum(2, LEFT);
 			}
 			else if (moveCommands[i] == MOVE_FORWARD_THREE_STEPS)
 			{
-				position.AddCellNum(3, RIGHT);
+				position->AddCellNum(3, RIGHT);
 			}
 			else if (moveCommands[i] == MOVE_BACKWARD_THREE_STEPS)
 			{
-				position.AddCellNum(3, LEFT);
+				position->AddCellNum(3, LEFT);
 			}
 			else if (moveCommands[i] == ROTATE_CLOCKWISE)
 			{
@@ -124,27 +124,27 @@ void Player::Move(Grid * pGrid, Command moveCommands[])
 		else if(currDirection==LEFT){
 			if (moveCommands[i]==MOVE_FORWARD_ONE_STEP)
 			{
-				position.AddCellNum(1, LEFT);
+				position->AddCellNum(1, LEFT);
 			}
 			else if (moveCommands[i] == MOVE_BACKWARD_ONE_STEP)
 			{
-				position.AddCellNum(1, RIGHT);
+				position->AddCellNum(1, RIGHT);
 			}
 			else if (moveCommands[i] == MOVE_FORWARD_TWO_STEPS)
 			{
-				position.AddCellNum(2, LEFT);
+				position->AddCellNum(2, LEFT);
 			}
 			else if (moveCommands[i] == MOVE_BACKWARD_TWO_STEPS)
 			{
-				position.AddCellNum(2, RIGHT);
+				position->AddCellNum(2, RIGHT);
 			}
 			else if (moveCommands[i] == MOVE_FORWARD_THREE_STEPS)
 			{
-				position.AddCellNum(3, LEFT);
+				position->AddCellNum(3, LEFT);
 			}
 			else if (moveCommands[i] == MOVE_BACKWARD_THREE_STEPS)
 			{
-				position.AddCellNum(3, RIGHT);
+				position->AddCellNum(3, RIGHT);
 			}
 			else if (moveCommands[i] == ROTATE_CLOCKWISE)
 			{
@@ -158,27 +158,27 @@ void Player::Move(Grid * pGrid, Command moveCommands[])
 		else if(currDirection==UP){
 			if (moveCommands[i]==MOVE_FORWARD_ONE_STEP)
 			{
-				position.AddCellNum(1, UP);
+				position->AddCellNum(1, UP);
 			}
 			else if (moveCommands[i] == MOVE_BACKWARD_ONE_STEP)
 			{
-				position.AddCellNum(1, DOWN);
+				position->AddCellNum(1, DOWN);
 			}
 			else if (moveCommands[i] == MOVE_FORWARD_TWO_STEPS)
 			{
-				position.AddCellNum(2, UP);
+				position->AddCellNum(2, UP);
 			}
 			else if (moveCommands[i] == MOVE_BACKWARD_TWO_STEPS)
 			{
-				position.AddCellNum(2, DOWN);
+				position->AddCellNum(2, DOWN);
 			}
 			else if (moveCommands[i] == MOVE_FORWARD_THREE_STEPS)
 			{
-				position.AddCellNum(3, UP);
+				position->AddCellNum(3, UP);
 			}
 			else if (moveCommands[i] == MOVE_BACKWARD_THREE_STEPS)
 			{
-				position.AddCellNum(3, DOWN);
+				position->AddCellNum(3, DOWN);
 			}
 			else if (moveCommands[i] == ROTATE_CLOCKWISE)
 			{
@@ -192,27 +192,27 @@ void Player::Move(Grid * pGrid, Command moveCommands[])
 		else if(currDirection==DOWN){
 			if (moveCommands[i]==MOVE_FORWARD_ONE_STEP)
 			{
-				position.AddCellNum(1, DOWN);
+				position->AddCellNum(1, DOWN);
 			}
 			else if (moveCommands[i] == MOVE_BACKWARD_ONE_STEP)
 			{
-				position.AddCellNum(1, UP);
+				position->AddCellNum(1, UP);
 			}
 			else if (moveCommands[i] == MOVE_FORWARD_TWO_STEPS)
 			{
-				position.AddCellNum(2, DOWN);
+				position->AddCellNum(2, DOWN);
 			}
 			else if (moveCommands[i] == MOVE_BACKWARD_TWO_STEPS)
 			{
-				position.AddCellNum(2, UP);
+				position->AddCellNum(2, UP);
 			}
 			else if (moveCommands[i] == MOVE_FORWARD_THREE_STEPS)
 			{
-				position.AddCellNum(3, DOWN);
+				position->AddCellNum(3, DOWN);
 			}
 			else if (moveCommands[i] == MOVE_BACKWARD_THREE_STEPS)
 			{
-				position.AddCellNum(3, UP);
+				position->AddCellNum(3, UP);
 			}
 			else if (moveCommands[i] == ROTATE_CLOCKWISE)
 			{
@@ -224,9 +224,9 @@ void Player::Move(Grid * pGrid, Command moveCommands[])
 			}
 		}
 	
-		if (position.IsValidCell() == true)
+		if (position->IsValidCell() == true)
 		{
-			pGrid->UpdatePlayerCell(this , position);
+			pGrid->UpdatePlayerCell(this , *position);
 		}
 		
 		pGrid->PrintErrorMessage("Click anywhere to execute the next command.");

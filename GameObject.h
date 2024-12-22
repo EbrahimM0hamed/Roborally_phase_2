@@ -2,6 +2,7 @@
 #include <fstream>
 #include "Grid.h"
 #include "iomanip"
+#include"Player.h"
 
 // Base Class for All Game Objects ( Belts, danger zones, .. )
 class GameObject
