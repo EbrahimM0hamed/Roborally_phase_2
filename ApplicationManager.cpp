@@ -16,6 +16,7 @@
 #include "LoadAction.h"
 #include "SwichToPlayMode.h"
 #include "SwichToDesignMode.h"
+#include "SelectMovement.h"
 /// TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -119,7 +120,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case TO_DESIGN_MODE:				 // TODO:
 		pAct = new SwichToDesignMode(this); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
-
+	case SELECT_COMMAND:
+		pAct = new SelectMovement(this);
+		break;
 		/// TODO: Add a case for EACH Action type in the Design mode or Play mode
 
 	case STATUS: // a click on the status bar ==> no action

@@ -229,6 +229,7 @@
     <ClCompile Include="SwichToPlayMode.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="SelectMovement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -388,5 +389,6 @@
     <ClInclude Include="SwichToPlayMode.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="SelectMovement.h" />
   </ItemGroup>
 </Project>
