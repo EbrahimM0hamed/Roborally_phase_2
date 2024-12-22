@@ -29,7 +29,8 @@ class Grid
 	bool hasFlag;
 	bool hasAntenna;
 	bool endGame;	       // A boolean indicating if the Game is ended or not (a player reaches the flag cell or not)
-
+	Command *avilableMoveCommands=new Command[10];
+    Command *saveedMoveCommands=new Command[5];
 public:
 
 	Grid(Input * pIn, Output * pOut);	  // Gives the Grid a Pointer to the Output Object and the Input Object
@@ -66,6 +67,7 @@ public:
 	void setBeltBody(Belt *pBelt,bool exist);
 	bool checkBeltBody(Belt *pBelt);
 	bool checkBeltEnd(CellPosition cellpos);
+	// command GetSavedMoveCommands(int index);
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
 
 	// ========= Other Getters =========
