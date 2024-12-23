@@ -193,6 +193,7 @@
     <ClCompile Include="RotatingGear.cpp" />
     <ClCompile Include="SaveGridAction.cpp" />
     <ClCompile Include="SelectMovement.cpp" />
+    <ClCompile Include="ShootingPhase.cpp" />
     <ClCompile Include="SwichToDesignMode.cpp" />
     <ClCompile Include="SwichToPlayMode.cpp" />
     <ClCompile Include="WaterPit.cpp" />
@@ -248,6 +249,7 @@
     <ClInclude Include="RotatingGear.h" />
     <ClInclude Include="SaveGridAction.h" />
     <ClInclude Include="SelectMovement.h" />
+    <ClInclude Include="ShootingPhase.h" />
     <ClInclude Include="SwichToDesignMode.h" />
     <ClInclude Include="SwichToPlayMode.h" />
     <ClInclude Include="UI_Info.h" />

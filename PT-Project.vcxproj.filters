@@ -230,6 +230,7 @@
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="SelectMovement.cpp" />
+    <ClCompile Include="ShootingPhase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -390,5 +391,6 @@
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="SelectMovement.h" />
+    <ClInclude Include="ShootingPhase.h" />
   </ItemGroup>
 </Project>
