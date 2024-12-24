@@ -229,11 +229,17 @@
     <ClCompile Include="SwichToPlayMode.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="ShootingPhase.cpp" />
     <ClCompile Include="ExecuteMovement.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
     <ClCompile Include="SelectMovement.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="hackdevice.cpp" />
+    <ClCompile Include="RebootRepair.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="ShootingPhase.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -395,11 +401,17 @@
     <ClInclude Include="SwichToPlayMode.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="ShootingPhase.h" />
     <ClInclude Include="ExecuteMovement.h">
       <Filter>Actions</Filter>
     </ClInclude>
     <ClInclude Include="SelectMovement.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="hackdevice.h" />
+    <ClInclude Include="RebootRepair.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ShootingPhase.h">
       <Filter>Actions</Filter>
     </ClInclude>
   </ItemGroup>
