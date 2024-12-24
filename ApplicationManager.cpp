@@ -18,6 +18,7 @@
 #include "SwichToDesignMode.h"
 #include "SelectMovement.h"
 #include "ExecuteMovement.h"
+#include "RebootRepair.h"
 /// TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -127,6 +128,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		/// TODO: Add a case for EACH Action type in the Design mode or Play mode
 	case EXECUTE_COMMANDS:
 		pAct = new ExecuteMovement(this);
+		break;
+	case REBOOT_REPAIR:
+		pAct = new RebootRepairAction(this);
 		break;
 	case STATUS: // a click on the status bar ==> no action
 		return;

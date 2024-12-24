@@ -13,6 +13,8 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), health(10), playerNu
     {
         avilableMoveCommands[i] = NO_COMMAND;
     }
+	toolKit=0;
+	isHacked=0;
 	// Make all the needed initialization or validations
 }
 
@@ -111,6 +113,22 @@ Command Player::GetAvilableMoveCommands(int index)
 Command Player::GetSaveedMoveCommands(int index)
 {
 	return saveedMoveCommands[index];
+}
+void Player::SetHacked(int isHacked)
+{
+	this->isHacked += isHacked;
+}
+int Player::GetHacked()
+{
+	return isHacked;
+}
+void Player::SetToolkit(int toolKit)
+{
+	this->toolKit += toolKit;
+}
+int Player::GetToolkit()
+{
+	return toolKit;
 }
 // ====== Drawing Functions ======
 
