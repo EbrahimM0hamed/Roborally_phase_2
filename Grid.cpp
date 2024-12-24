@@ -393,12 +393,23 @@ bool Grid::checkBeltEnd(CellPosition cellpos)
 	}
 	return true;
 }
+
+CellPosition Grid::GetAntennaPosition()
+{
+	return AntennaPosition;
+}
 // ========= Other Getters =========
 
 
 Player * Grid::GetCurrentPlayer() const
 {
 	return PlayerList[currPlayerNumber];
+}
+Player* Grid::GetNextPlayer() const
+{
+	int next;
+	(currPlayerNumber == 0) ? next = 1 : next = 0;
+	return PlayerList[next];
 }
 
 Belt * Grid::GetNextBelt(const CellPosition & position)
