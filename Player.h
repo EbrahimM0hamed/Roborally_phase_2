@@ -41,7 +41,7 @@ public:
 	Command GetAvilableMoveCommands(int index);
 	Command GetSaveedMoveCommands(int index);
 	///TODO: You can add setters and getters for data members here (if needed)
-
+	int GetplayerNum();
 	// ====== Drawing Functions ======
 
 	void Draw(Output* pOut) const;			// Draws the Player's Triangle on its current cell

@@ -52,6 +52,10 @@ Direction Player::GetCurrDirection()
 {
 	return this->currDirection;
 }
+int Player::GetplayerNum()
+{
+	return playerNum;
+}
 void Player::SetAvilableMoveCommands(Command  avilableMoveCommands[],int index)
 {
 	for (int i = 0; i < index; i++)
