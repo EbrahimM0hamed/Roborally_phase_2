@@ -5,10 +5,10 @@ using namespace std;
 class RebootRepairAction : public Action
 {
 private:
-	Player* player;
+	Player* pPlayer;
 	Grid* pGrid;
 public:
-	RebootRepairAction(ApplicationManager* pApp, Player* player, Grid* pGrid);
+	RebootRepairAction(ApplicationManager* pApp);
 
 	virtual void  ReadActionParameters();
 

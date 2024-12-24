@@ -479,7 +479,7 @@ void Grid::UpdateInterface() const
 			if (i < MaxPlayerCount-1) // except the last player
 				playersInfo += ", ";
 		}
-		playersInfo += " | Curr = " + to_string(currPlayerNumber);
+		playersInfo += " | Curr = " + to_string(currPlayerNumber+1);
 
 		pOut->PrintPlayersInfo(playersInfo);
 

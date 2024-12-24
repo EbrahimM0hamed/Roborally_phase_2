@@ -2,7 +2,7 @@
 #include "Output.h" 
 #include "Grid.h"
 #include "Player.h"  
-
+#include "RebootRepair.h"
 
 
 Workshop::Workshop(const CellPosition & workshopPosition):GameObject( workshopPosition)
@@ -18,29 +18,25 @@ void Workshop::Draw(Output * pOut) const
 
 void Workshop::Apply(Grid * pGrid, Player * pPlayer,Input *pIn)
 {
-	pPlayer->SetHealth(10);
 	Output* pOut = pGrid->GetOutput();
 	pOut->PrintMessage("You reached a workshop! To Purchase additional equipment enter : 1 Double Laser - 2 Extended Memory - 3 Toolkit - 4 Hack Device)");
 	int choice = pIn->GetInteger(pOut);
 	if (choice == 1)
 	{
 		pOut->PrintMessage("You purchased a Double Laser");
-		//
 	}
 	else if (choice == 2)
 	{
 		pOut->PrintMessage("You purchased an Extended Memory");
-		//
 	}
 	else if (choice == 3)
 	{
+		pPlayer->SetToolkit(1);
 		pOut->PrintMessage("You purchased a Toolkit");
-		//
 	}
 	else if (choice == 4)
 	{
 		pOut->PrintMessage("You purchased a Hack Device");
-		//
 	}
 	else
 	{

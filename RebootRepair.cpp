@@ -3,10 +3,8 @@
 #include"Player.h"
 using namespace std;
 
-RebootRepairAction::RebootRepairAction(ApplicationManager* pApp, Player* player, Grid* pGrid) :Action(pApp)
+RebootRepairAction::RebootRepairAction(ApplicationManager* pApp) :Action(pApp)
 {
-	this->player = player;
-	this->pGrid = pGrid;
 }
 void RebootRepairAction::ReadActionParameters()
 {
@@ -14,8 +12,18 @@ void RebootRepairAction::ReadActionParameters()
 
 void RebootRepairAction::Execute()
 {
-	player->SetHealth(10);
-	pGrid->AdvanceCurrentPlayer();
+	Grid* pGrid = pManager->GetGrid();
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
+	pPlayer = pGrid->GetCurrentPlayer();
+	if(pPlayer->GetToolkit()>0)
+	{
+		pPlayer->SetHealth(10);
+		pGrid->AdvanceCurrentPlayer();
+	}else
+	{
+		pGrid->PrintErrorMessage("You don't have a toolkit to repair your robot");
+	}
 }
 RebootRepairAction:: ~RebootRepairAction()
 {
