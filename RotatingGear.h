@@ -7,7 +7,7 @@ class RotatingGear : public GameObject
 public:
 	RotatingGear(const CellPosition & gearposition,bool clockwise); // A constructor for initialization
 	virtual void Draw(Output* pOut) const; // Draws a rotating gear in a selected cell
-	virtual void Apply(Grid* pGrid, Player* pPlayer); // Applys the effect of the flag
+	virtual void Apply(Grid* pGrid, Player* pPlayer,Input *pIn); // Applys the effect of the flag
 	bool GetisClockWise() const; // Getter for the direction
 	void Save(ofstream &OutFile,string file);	// Saves the GameObject parameters to the file
 	virtual void Load(ifstream &Infile, string file);

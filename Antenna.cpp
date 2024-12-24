@@ -13,9 +13,9 @@ void Antenna::Draw(Output * pOut) const
 	pOut->DrawAntenna(position);
 }
 
-void Antenna::Apply(Grid * pGrid, Player * pPlayer)
+void Antenna::Apply(Grid * pGrid, Player * pPlayer,Input *pIn)
 {
-	Input *pIn;
+
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
 

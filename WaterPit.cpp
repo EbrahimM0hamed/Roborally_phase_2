@@ -13,9 +13,8 @@ void WaterPit::Draw(Output * pOut) const
 	pOut->DrawWaterPit(position);
 }
 
-void WaterPit::Apply(Grid * pGrid, Player * pPlayer)
+void WaterPit::Apply(Grid * pGrid, Player * pPlayer,Input *pIn)
 {
-	Input* pIn;
 	
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 

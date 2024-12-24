@@ -181,6 +181,7 @@
     <ClCompile Include="CutAction.cpp" />
     <ClCompile Include="DangerZone.cpp" />
     <ClCompile Include="DeleteAction.cpp" />
+    <ClCompile Include="ExecuteMovement.cpp" />
     <ClCompile Include="Flag.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Grid.cpp" />
@@ -238,6 +239,7 @@
     <ClInclude Include="DangerZone.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="DeleteAction.h" />
+    <ClInclude Include="ExecuteMovement.h" />
     <ClInclude Include="Flag.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Grid.h" />

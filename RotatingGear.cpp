@@ -13,9 +13,9 @@ void RotatingGear::Draw(Output* pOut) const
 	pOut->DrawRotatingGear(position, isClockWise);
 }
 
-void RotatingGear::Apply(Grid* pGrid, Player* pPlayer)
+void RotatingGear::Apply(Grid* pGrid, Player* pPlayer,Input *pIn)
 {
-	Input* pIn;
+
 
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 	// == Here are some guideline steps (numbered below) to implement this function ==

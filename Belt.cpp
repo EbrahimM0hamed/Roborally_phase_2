@@ -12,9 +12,9 @@ void Belt::Draw(Output* pOut) const
 	pOut->DrawBelt(position, endCellPos);
 }
 
-void Belt::Apply(Grid* pGrid, Player* pPlayer)
+void Belt::Apply(Grid* pGrid, Player* pPlayer,Input *pIn)
 {
-	Input* pIn;
+
 	
 	
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below

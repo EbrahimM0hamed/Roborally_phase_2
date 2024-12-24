@@ -3,6 +3,7 @@
 #include "Grid.h"
 #include "Cell.h"
 #include "Output.h"
+#include "Input.h"
 class Player
 {
 	Cell* pCell;		   // pointer to the current Cell of the player
@@ -13,7 +14,8 @@ class Player
 	int stepCount;		   // step count which is the same as his cellNum: from 1 to NumVerticalCells*NumHorizontalCells
 	Direction currDirection; // Current Direction of the player
 	int health;				// Player's current health points
-
+	Command *avilableMoveCommands=new Command[10];
+	Command *saveedMoveCommands=new Command[5];
 	// owned equipments
 	// carried consumables
 	// carried laser type (default, double laser)
@@ -34,7 +36,10 @@ public:
 	int GetHealth();				// A getter for the health points
 	void reduceHealth(int h);		// A function to reduce the health points by h
 	Direction GetCurrDirection();
-
+	void SetAvilableMoveCommands(Command avilableMoveCommands[],int index);
+	void SetSaveedMoveCommands(Command avilableMoveCommands[],int index);
+	Command GetAvilableMoveCommands(int index);
+	Command GetSaveedMoveCommands(int index);
 	///TODO: You can add setters and getters for data members here (if needed)
 
 	// ====== Drawing Functions ======
@@ -45,7 +50,7 @@ public:
 
 	// ====== Game Functions ======
 
-	void Move(Grid* pGrid, Command moveCommands[]);	// Moves the Player with the passed move command
+	void Move(Grid* pGrid, Command moveCommands[],Input *pIn);	// Moves the Player with the passed move command
 	// and Applies the Game Object's effect (if any) of the end reached cell 
 	// for example, if the end cell contains a belt, take it
 

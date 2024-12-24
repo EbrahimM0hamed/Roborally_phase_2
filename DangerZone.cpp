@@ -11,9 +11,8 @@ void DangerZone::Draw(Output * pOut) const
 	pOut->DrawDangerZone(position);
 }
 
-void DangerZone::Apply(Grid * pGrid, Player * pPlayer)
+void DangerZone::Apply(Grid * pGrid, Player * pPlayer, Input* pIn)
 {
-	Input* pIn;
 	///TODO: Implement this function as mentioned in the guideline steps (numbered below) below
 
 

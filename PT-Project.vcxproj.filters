@@ -229,8 +229,13 @@
     <ClCompile Include="SwichToPlayMode.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
-    <ClCompile Include="SelectMovement.cpp" />
     <ClCompile Include="ShootingPhase.cpp" />
+    <ClCompile Include="ExecuteMovement.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectMovement.cpp">
+      <Filter>Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -390,7 +395,12 @@
     <ClInclude Include="SwichToPlayMode.h">
       <Filter>Actions</Filter>
     </ClInclude>
-    <ClInclude Include="SelectMovement.h" />
     <ClInclude Include="ShootingPhase.h" />
+    <ClInclude Include="ExecuteMovement.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectMovement.h">
+      <Filter>Actions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

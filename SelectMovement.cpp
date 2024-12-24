@@ -16,9 +16,14 @@ void SelectMovement::Execute()
     Output *pOut = pGrid->GetOutput();
     Input *pIn = pGrid->GetInput();
 
+    Player *pPlayer=pGrid->GetCurrentPlayer();
     int health = pGrid->GetCurrentPlayer()->GetHealth();
     srand(time(0));
     Command *avilableMoveCommands = new Command[health];
+    for (int i = 0; i < health; i++)
+    {
+        avilableMoveCommands[i] = NO_COMMAND;
+    }
     for (int i = 0; i < health; i++)
     {
         int command = rand() % 8; // Generate a new command for each iteration
@@ -50,7 +55,7 @@ void SelectMovement::Execute()
             break;
         }
     }
-
+    pPlayer->SetAvilableMoveCommands(avilableMoveCommands, health);
     int size = (health > 5) ? 5 : health;
     Command *saveedMoveCommands = new Command[size];
     for (int i = 0; i < size; i++)
@@ -70,8 +75,9 @@ void SelectMovement::Execute()
             pOut->CreateCommandsBar(saveedMoveCommands, limit, avilableMoveCommands, health);
         }
     }
+    pPlayer->SetSaveedMoveCommands(saveedMoveCommands, size);
     
-    // Clean up allocated memory
+
     delete[] avilableMoveCommands;
     delete[] saveedMoveCommands;
 }

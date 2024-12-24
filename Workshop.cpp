@@ -16,11 +16,10 @@ void Workshop::Draw(Output * pOut) const
 	pOut->DrawWorkshop(position);
 }
 
-void Workshop::Apply(Grid * pGrid, Player * pPlayer)
+void Workshop::Apply(Grid * pGrid, Player * pPlayer,Input *pIn)
 {
 	pPlayer->SetHealth(10);
 	Output* pOut = pGrid->GetOutput();
-	Input* pIn = pGrid->GetInput();
 	pOut->PrintMessage("You reached a workshop! To Purchase additional equipment enter : 1 Double Laser - 2 Extended Memory - 3 Toolkit - 4 Hack Device)");
 	int choice = pIn->GetInteger(pOut);
 	if (choice == 1)

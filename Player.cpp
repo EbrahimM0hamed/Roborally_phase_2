@@ -5,7 +5,14 @@
 Player::Player(Cell * pCell, int playerNum) : stepCount(0), health(10), playerNum(playerNum), currDirection(RIGHT)
 {
 	this->pCell = pCell;
-
+	for (int i = 0; i < 5; i++)
+    {
+		saveedMoveCommands[i] = NO_COMMAND;
+    }
+	for (int i = 0; i < 10; i++)
+    {
+        avilableMoveCommands[i] = NO_COMMAND;
+    }
 	// Make all the needed initialization or validations
 }
 
@@ -45,7 +52,62 @@ Direction Player::GetCurrDirection()
 {
 	return this->currDirection;
 }
-
+void Player::SetAvilableMoveCommands(Command  avilableMoveCommands[],int index)
+{
+	for (int i = 0; i < index; i++)
+    {
+		if (avilableMoveCommands[i] == MOVE_FORWARD_ONE_STEP)
+			this->avilableMoveCommands[i] = MOVE_FORWARD_ONE_STEP;
+		else if (avilableMoveCommands[i] == MOVE_BACKWARD_ONE_STEP)
+			this->avilableMoveCommands[i] = MOVE_BACKWARD_ONE_STEP;
+		else if (avilableMoveCommands[i] == MOVE_FORWARD_TWO_STEPS)
+			this->avilableMoveCommands[i] = MOVE_FORWARD_TWO_STEPS;
+		else if (avilableMoveCommands[i] == MOVE_BACKWARD_TWO_STEPS)
+			this->avilableMoveCommands[i] = MOVE_BACKWARD_TWO_STEPS;
+		else if (avilableMoveCommands[i] == MOVE_FORWARD_THREE_STEPS)
+			this->avilableMoveCommands[i] = MOVE_FORWARD_THREE_STEPS;
+		else if (avilableMoveCommands[i] == MOVE_BACKWARD_THREE_STEPS)
+			this->avilableMoveCommands[i] = MOVE_BACKWARD_THREE_STEPS;
+		else if (avilableMoveCommands[i] == ROTATE_CLOCKWISE)
+			this->avilableMoveCommands[i] = ROTATE_CLOCKWISE;
+		else if (avilableMoveCommands[i] == ROTATE_COUNTERCLOCKWISE)
+			this->avilableMoveCommands[i] = ROTATE_COUNTERCLOCKWISE;
+        // this->avilableMoveCommands[i] = avilableMoveCommands[i];
+    }
+}
+void Player::SetSaveedMoveCommands(Command  saveedMoveCommands[],int index)
+{
+	for (int i = 0; i < index; i++)
+    {
+		if (saveedMoveCommands[i] == NO_COMMAND)
+			this->saveedMoveCommands[i] = NO_COMMAND;
+		else if (saveedMoveCommands[i] == MOVE_FORWARD_ONE_STEP)
+			this->saveedMoveCommands[i] = MOVE_FORWARD_ONE_STEP;
+		else if (saveedMoveCommands[i] == MOVE_BACKWARD_ONE_STEP)
+			this->saveedMoveCommands[i] = MOVE_BACKWARD_ONE_STEP;
+		else if (saveedMoveCommands[i] == MOVE_FORWARD_TWO_STEPS)
+			this->saveedMoveCommands[i] = MOVE_FORWARD_TWO_STEPS;
+		else if (saveedMoveCommands[i] == MOVE_BACKWARD_TWO_STEPS)
+			this->saveedMoveCommands[i] = MOVE_BACKWARD_TWO_STEPS;
+		else if (saveedMoveCommands[i] == MOVE_FORWARD_THREE_STEPS)
+			this->saveedMoveCommands[i] = MOVE_FORWARD_THREE_STEPS;
+		else if (saveedMoveCommands[i] == MOVE_BACKWARD_THREE_STEPS)
+			this->saveedMoveCommands[i] = MOVE_BACKWARD_THREE_STEPS;
+		else if (saveedMoveCommands[i] == ROTATE_CLOCKWISE)
+			this->saveedMoveCommands[i] = ROTATE_CLOCKWISE;
+		else if (saveedMoveCommands[i] == ROTATE_COUNTERCLOCKWISE)
+			this->saveedMoveCommands[i] = ROTATE_COUNTERCLOCKWISE;
+        // this->saveedMoveCommands[i] = saveedMoveCommands[i];
+    }
+}
+Command Player::GetAvilableMoveCommands(int index)
+{
+	return avilableMoveCommands[index];
+}
+Command Player::GetSaveedMoveCommands(int index)
+{
+	return saveedMoveCommands[index];
+}
 // ====== Drawing Functions ======
 
 void Player::Draw(Output* pOut) const
@@ -70,7 +132,7 @@ void Player::ClearDrawing(Output* pOut) const
 
 // ====== Game Functions ======
 
-void Player::Move(Grid * pGrid, Command moveCommands[])
+void Player::Move(Grid * pGrid, Command moveCommands[], Input* pIn)
 {
 
 	///TODO: Implement this function using the guidelines mentioned below
@@ -85,7 +147,7 @@ void Player::Move(Grid * pGrid, Command moveCommands[])
 	// - Don't forget to apply game objects at the final destination cell and check for game ending
 	CellPosition *position;
 	position=&pCell->GetCellPosition();
-	for (int i = 0;i < COMMANDS_COUNT;i++)
+	for (int i = 0;i < 5;i++)
 	{
 		if(currDirection==RIGHT){
 			if (moveCommands[i]==MOVE_FORWARD_ONE_STEP)
@@ -224,9 +286,10 @@ void Player::Move(Grid * pGrid, Command moveCommands[])
 			}
 		}
 	
-		if (position->IsValidCell() == true)
+		if (position->IsValidCell())
 		{
 			pGrid->UpdatePlayerCell(this , *position);
+			pGrid->UpdateInterface();
 		}
 		
 		pGrid->PrintErrorMessage("Click anywhere to execute the next command.");
@@ -236,7 +299,7 @@ void Player::Move(Grid * pGrid, Command moveCommands[])
 		Cell* fCell = pGrid->GetCurrentPlayer()->GetCell();
 		if (fCell->GetGameObject())
 		{
-			fCell->GetGameObject()->Apply(pGrid, this);
+			fCell->GetGameObject()->Apply(pGrid, this, pIn);
 		}
 	}
 	
