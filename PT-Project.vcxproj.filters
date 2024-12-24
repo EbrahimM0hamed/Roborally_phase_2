@@ -236,6 +236,7 @@
     <ClCompile Include="SelectMovement.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="RebootRepair.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -402,5 +403,6 @@
     <ClInclude Include="SelectMovement.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="RebootRepair.h" />
   </ItemGroup>
 </Project>
