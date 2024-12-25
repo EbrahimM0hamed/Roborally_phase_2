@@ -48,6 +48,7 @@ Output::Output()
 	UI.BeltLineWidth = 6;
 	UI.BeltColor = DARKSLATEBLUE;
 
+	UI.LaserWidth = 3;
 	// The X and Y Offsets of the Space BEFORE Drawing the Belt (offset from the start X and Y of the Cell)
 	UI.BeltXOffset = (UI.CellWidth - 2 * UI.BeltLineWidth) / 5;
 	UI.BeltYOffset = (UI.CellHeight / 4) * 3;
@@ -738,7 +739,32 @@ void Output::DrawWaterPit(const CellPosition& cellPos) const
 
 }
 
-
+void Output::DrawLaser(const CellPosition& fromCellPos, const CellPosition& toCellPos) const
+{
+	int fromCellStartX = GetCellStartX(fromCellPos);
+	int fromCellStartY = GetCellStartY(fromCellPos);
+	int toCellStartX = GetCellStartX(toCellPos);
+	int toCellStartY = GetCellStartY(toCellPos);
+	int beltFromCellX = fromCellStartX + (UI.CellWidth / 2) + UI.BeltXOffset;
+	int beltToCellX = toCellStartX + UI.BeltXOffset;
+	int beltFromCellY = fromCellStartY + UI.BeltYOffset;
+	int beltToCellY = toCellStartY + UI.BeltYOffset;
+	pWind->SetPen(UI.DangerZoneCellColor, UI.LaserWidth);
+	pWind->DrawLine(beltFromCellX, beltFromCellY, beltToCellX, beltToCellY);
+}
+void Output::RemoveLaser(const CellPosition& fromCellPos, const CellPosition& toCellPos) const
+{
+	int fromCellStartX = GetCellStartX(fromCellPos);
+	int fromCellStartY = GetCellStartY(fromCellPos);
+	int toCellStartX = GetCellStartX(toCellPos);
+	int toCellStartY = GetCellStartY(toCellPos);
+	int beltFromCellX = fromCellStartX + (UI.CellWidth / 2) + UI.BeltXOffset;
+	int beltToCellX = toCellStartX + UI.BeltXOffset;
+	int beltFromCellY = fromCellStartY + UI.BeltYOffset;
+	int beltToCellY = toCellStartY + UI.BeltYOffset;
+	pWind->SetPen(UI.CellColor, UI.LaserWidth);
+	pWind->DrawLine(beltFromCellX, beltFromCellY, beltToCellX, beltToCellY);
+}
 
 Output::~Output()
 {

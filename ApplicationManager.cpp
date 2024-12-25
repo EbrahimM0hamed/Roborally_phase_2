@@ -21,6 +21,7 @@
 #include "RebootRepair.h"
 #include "Rounds.h"
 #include "UseConsumable.h"
+#include "NewGame.h"
 /// TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -165,6 +166,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			return;
 		}
 		pAct = new UseConsumable(this);
+		break;
+	case NEW_GAME:
+		if (pGrid->GetCurrentPlayer()->GetIsHack())
+		{
+			pGrid->PrintErrorMessage("You are hacked, you can't play this round");
+			pGrid->AdvanceCurrentPlayer();
+			return;
+		}
+		pAct = new NewGame(this);
 		break;
 	case STATUS: // a click on the status bar ==> no action
 		return;

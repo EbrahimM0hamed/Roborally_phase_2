@@ -68,6 +68,7 @@ public:
 	void setBeltBody(Belt *pBelt,bool exist);
 	bool checkBeltBody(Belt *pBelt);
 	bool checkBeltEnd(CellPosition cellpos);
+	void SetCurrentPlayerNumber(int num);
 	Antenna* GetAntenna();
 	CellPosition GetAntennaPosition();
 	// command GetSavedMoveCommands(int index);

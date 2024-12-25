@@ -303,6 +303,11 @@ GameObject * Grid::GetClipboard() const // to be used in paste
 	return Clipboard;
 }
 
+void Grid::SetCurrentPlayerNumber(int num)
+{
+	this->currPlayerNumber = num;
+}
+
 void Grid::SetEndGame(bool endGame)
 {
 	this->endGame = endGame;

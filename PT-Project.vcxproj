@@ -188,6 +188,7 @@
     <ClCompile Include="hackdevice.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="LoadAction.cpp" />
+    <ClCompile Include="NewGame.cpp" />
     <ClCompile Include="Output.cpp" />
     <ClCompile Include="PasteAction.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -250,6 +251,7 @@
     <ClInclude Include="hackdevice.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="LoadAction.h" />
+    <ClInclude Include="NewGame.h" />
     <ClInclude Include="Output.h" />
     <ClInclude Include="PasteAction.h" />
     <ClInclude Include="Player.h" />
