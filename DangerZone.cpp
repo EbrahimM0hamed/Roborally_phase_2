@@ -21,7 +21,7 @@ void DangerZone::Apply(Grid * pGrid, Player * pPlayer, Input* pIn)
 	// 1- Print a message "You have reached a danger zone. Click to continue ..." and wait mouse click
 	pGrid->PrintErrorMessage("You have reached a danger zone. Click to continue ...");
 	pIn->GetCellClicked();
-	if (pPlayer->getIsShielded() == true)
+	if (pPlayer->getHasShield() == true)
 	{
 		pPlayer->deactivateShield();
 		pPlayer->deactivateShield();

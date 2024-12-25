@@ -54,7 +54,7 @@ void ShootingPhase::Execute()
 	if (isFaced == true)
 	{
 		// double laser condition must be done here
-		if (oppPlayer->getIsShielded() == true)
+		if (oppPlayer->getHasShield() == true)
 		{
 			oppPlayer->deactivateShield();
 			pGrid->PrintErrorMessage("Opponent player's shield absorbed the damage");
