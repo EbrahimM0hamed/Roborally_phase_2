@@ -16,6 +16,8 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), health(10), playerNu
 	toolKit=0;
 	numHacked=0;
 	isHacked = false;
+	isShielded = false;
+	hasSheild = false;
 	// Make all the needed initialization or validations
 }
 
@@ -367,4 +369,36 @@ void Player::AppendPlayerInfo(string & playersInfo) const
 	}
 	playersInfo += to_string(health) + ")";
 
+}
+
+void Player::activateShield()
+{
+	if (hasSheild == true && isShielded == false)
+	{
+		isShielded = true;
+	}
+}
+
+void Player::deactivateShield()
+{
+	if(isShielded == true)
+	{
+		isShielded = false;
+		hasSheild = false;
+	}
+}
+
+bool Player::getIsShielded()
+{
+	return isShielded;
+}
+
+bool Player::getHasShield()
+{
+	return hasSheild;
+}
+
+void Player::purchaseShield()
+{
+	hasSheild = true;
 }

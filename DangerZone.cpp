@@ -21,8 +21,18 @@ void DangerZone::Apply(Grid * pGrid, Player * pPlayer, Input* pIn)
 	// 1- Print a message "You have reached a danger zone. Click to continue ..." and wait mouse click
 	pGrid->PrintErrorMessage("You have reached a danger zone. Click to continue ...");
 	pIn->GetCellClicked();
-	// 2- Apply the danger zone's effect by reducing the health of the player by 1 
-	pPlayer->reduceHealth(1);
+	if (pPlayer->getIsShielded() == true)
+	{
+		pPlayer->deactivateShield();
+		pPlayer->deactivateShield();
+		pGrid->PrintErrorMessage("Shield absorbed the damage");
+	}
+	else
+	{
+		// 2- Apply the danger zone's effect by reducing the health of the player by 1 
+		pPlayer->reduceHealth(1);
+	}
+
 	// 3- Update the players info which is displayed (check Grid class and decide which function to use)
 	pGrid->UpdateInterface();
 }

@@ -57,8 +57,16 @@ void ShootingPhase::Execute()
 	if (isFaced == true)
 	{
 		// double laser condition must be done here
-		oppPlayer->reduceHealth(damage);
-		pGrid->PrintErrorMessage("You hit another player, click to continue");
+		if (oppPlayer->getIsShielded() == true)
+		{
+			oppPlayer->deactivateShield();
+			pGrid->PrintErrorMessage("Opponent player's shield absorbed the damage");
+		}
+		else
+		{
+			oppPlayer->reduceHealth(damage);
+			pGrid->PrintErrorMessage("You hit another player, click to continue");
+		}
 
 		if (oppPlayer->GetHealth() <= 0)
 		{

@@ -42,6 +42,18 @@ void Workshop::Apply(Grid * pGrid, Player * pPlayer,Input *pIn)
 		Player* pPlayer = pGrid->GetCurrentPlayer();
 ;		pPlayer->SetNumHacked(1);
 	}
+	else if (choice == 5)
+	{
+		if (pPlayer->getHasShield() == false)
+		{
+			pPlayer->purchaseShield();
+			pOut->PrintMessage("You purchased a Shield");
+		}
+		else
+		{
+			pOut->PrintMessage("You already have a Shield");
+		}
+	}
 	else
 	{
 		pOut->PrintMessage("Invalid choice");

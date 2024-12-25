@@ -197,6 +197,7 @@
     <ClCompile Include="Rounds.cpp" />
     <ClCompile Include="SaveGridAction.cpp" />
     <ClCompile Include="SelectMovement.cpp" />
+    <ClCompile Include="ShieldMechanic.cpp" />
     <ClCompile Include="ShootingPhase.cpp" />
     <ClCompile Include="SwichToDesignMode.cpp" />
     <ClCompile Include="SwichToPlayMode.cpp" />
@@ -258,6 +259,7 @@
     <ClInclude Include="Rounds.h" />
     <ClInclude Include="SaveGridAction.h" />
     <ClInclude Include="SelectMovement.h" />
+    <ClInclude Include="ShieldMechanic.h" />
     <ClInclude Include="ShootingPhase.h" />
     <ClInclude Include="SwichToDesignMode.h" />
     <ClInclude Include="SwichToPlayMode.h" />

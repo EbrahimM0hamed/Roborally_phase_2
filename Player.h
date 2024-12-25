@@ -20,6 +20,8 @@ class Player
 	bool isHacked;
 	int toolKit;
 	int doubleLaser;
+	bool isShielded;
+	bool hasSheild;
 	// carried consumables
 	// carried laser type (default, double laser)
 	// isHacked (to indicate whether the player is blocked to play the round, as a result of the opponent using a hacking device)
@@ -68,4 +70,9 @@ public:
 	void AppendPlayerInfo(string& playersInfo) const; // Appends player's info to the input string, 
 	// for example: P0(Direction, health)
 
+	void activateShield();
+	void deactivateShield();
+	bool getIsShielded();
+	bool getHasShield();
+	void purchaseShield();
 };
