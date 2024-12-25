@@ -16,8 +16,10 @@ class Player
 	int health;				// Player's current health points
 	Command *avilableMoveCommands=new Command[10];
 	Command *saveedMoveCommands=new Command[5];
-	int isHacked;
+	int numHacked;
+	bool isHacked;
 	int toolKit;
+	int doubleLaser;
 	// carried consumables
 	// carried laser type (default, double laser)
 	// isHacked (to indicate whether the player is blocked to play the round, as a result of the opponent using a hacking device)
@@ -41,10 +43,14 @@ public:
 	void SetSaveedMoveCommands(Command avilableMoveCommands[],int index);
 	Command GetAvilableMoveCommands(int index);
 	Command GetSaveedMoveCommands(int index);
-	void SetHacked(int isHacked);
-	int GetHacked();
+	void SetNumHacked(int isHacked);
+	int GetNumHacked();
+	void SetIsHack(bool isHack);
+	bool GetIsHack();
 	void SetToolkit(int toolKit);
 	int GetToolkit();
+	void SetDoubleLaser(int doubleLaser);
+	int GetDoubleLaser();
 	///TODO: You can add setters and getters for data members here (if needed)
 	int GetplayerNum();
 	// ====== Drawing Functions ======

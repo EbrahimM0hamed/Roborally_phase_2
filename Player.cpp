@@ -14,7 +14,8 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), health(10), playerNu
         avilableMoveCommands[i] = NO_COMMAND;
     }
 	toolKit=0;
-	isHacked=0;
+	numHacked=0;
+	isHacked = false;
 	// Make all the needed initialization or validations
 }
 
@@ -114,11 +115,19 @@ Command Player::GetSaveedMoveCommands(int index)
 {
 	return saveedMoveCommands[index];
 }
-void Player::SetHacked(int isHacked)
+void Player::SetNumHacked(int isHacked)
 {
-	this->isHacked += isHacked;
+	this->numHacked += isHacked;
 }
-int Player::GetHacked()
+int Player::GetNumHacked()
+{
+	return numHacked;
+}
+void Player::SetIsHack(bool isHack)
+{
+	this->isHacked = isHack;
+}
+bool Player::GetIsHack()
 {
 	return isHacked;
 }
@@ -129,6 +138,14 @@ void Player::SetToolkit(int toolKit)
 int Player::GetToolkit()
 {
 	return toolKit;
+}
+void Player::SetDoubleLaser(int doubleLaser)
+{
+	this->doubleLaser += doubleLaser;
+}
+int Player::GetDoubleLaser()
+{
+	return doubleLaser;
 }
 // ====== Drawing Functions ======
 
@@ -171,6 +188,8 @@ void Player::Move(Grid * pGrid, Command moveCommands[], Input* pIn)
 	position=&pCell->GetCellPosition();
 	for (int i = 0;i < 5;i++)
 	{
+		if (pGrid->GetEndGame())
+			break;
 		if(currDirection==RIGHT){
 			if (moveCommands[i]==MOVE_FORWARD_ONE_STEP)
 			{
@@ -330,7 +349,7 @@ void Player::Move(Grid * pGrid, Command moveCommands[], Input* pIn)
 void Player::AppendPlayerInfo(string & playersInfo) const
 {
 	// TODO: Modify the Info as needed
-	playersInfo += "P" + to_string(playerNum) + "(" ;
+	playersInfo += "P" + to_string(playerNum+1) + "(" ;
 	switch (currDirection)
 	{
 	case RIGHT:

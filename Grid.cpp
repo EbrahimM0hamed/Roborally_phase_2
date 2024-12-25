@@ -10,6 +10,7 @@
 #include "Workshop.h"
 #include "WaterPit.h"
 #include "DangerZone.h"
+#include "Antenna.h"
 
 Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pIn, pOut
 {
@@ -42,7 +43,7 @@ Grid::Grid(Input * pIn, Output * pOut) : pIn(pIn), pOut(pOut) // Initializing pI
 
 	hasFlag=false;
 	hasAntenna=false;
-	
+	pAntenna = new Antenna(CellPosition());
 	// Initialize Clipboard with NULL
 	Clipboard = NULL;
 
@@ -66,6 +67,7 @@ bool Grid::AddObjectToCell(GameObject * pNewObject)  // think if any validation 
 		if(dynamic_cast<Antenna *>(pNewObject)){
 			hasAntenna=true;
 			AntennaPosition=pNewObject->GetPosition();
+			pAntenna = dynamic_cast<Antenna*>(pNewObject);
 		}
 		if(Belt* pBelt=dynamic_cast<Belt *>(pNewObject)){
 			if(!checkBeltEnd(pos))
@@ -327,6 +329,10 @@ bool Grid::GetHasFlag()
 bool Grid::GetHasAntenna()
 {
 	return hasAntenna;
+}
+Antenna* Grid::GetAntenna()
+{
+	return pAntenna;
 }
 void Grid::setBeltBody(Belt *pBelt,bool exist)
 {

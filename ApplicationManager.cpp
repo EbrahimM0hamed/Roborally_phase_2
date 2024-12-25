@@ -19,6 +19,8 @@
 #include "SelectMovement.h"
 #include "ExecuteMovement.h"
 #include "RebootRepair.h"
+#include "Rounds.h"
+#include "UseConsumable.h"
 /// TODO: Add #include for all action types
 
 ApplicationManager::ApplicationManager()
@@ -27,6 +29,7 @@ ApplicationManager::ApplicationManager()
 	pOut = new Output();
 	pIn = pOut->CreateInput();
 	pGrid = new Grid(pIn, pOut);
+	pRounds = new Rounds;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -66,7 +69,11 @@ ActionType ApplicationManager::GetUserAction() const
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	Action *pAct = NULL;
-
+	if (pGrid->GetEndGame())
+	{
+		pOut->PrintMessage("Game Ended, Please Start New Game");
+		//have to start new came
+	}
 	// According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
@@ -123,14 +130,41 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new SwichToDesignMode(this); // temporary till you made its action class (CHANGE THIS LATTER)
 		break;
 	case SELECT_COMMAND:
+		if (pGrid->GetCurrentPlayer()->GetIsHack())
+		{
+			pGrid->PrintErrorMessage("You are hacked, you can't play this round");
+			pGrid->AdvanceCurrentPlayer();
+			return;
+		}
 		pAct = new SelectMovement(this);
 		break;
 		/// TODO: Add a case for EACH Action type in the Design mode or Play mode
 	case EXECUTE_COMMANDS:
+		if (pGrid->GetCurrentPlayer()->GetIsHack())
+		{
+			pGrid->PrintErrorMessage("You are hacked, you can't play this round");
+			pGrid->AdvanceCurrentPlayer();
+			return;
+		}
 		pAct = new ExecuteMovement(this);
 		break;
 	case REBOOT_REPAIR:
+		if (pGrid->GetCurrentPlayer()->GetIsHack())
+		{
+			pGrid->PrintErrorMessage("You are hacked, you can't play this round");
+			pGrid->AdvanceCurrentPlayer();
+			return;
+		}
 		pAct = new RebootRepairAction(this);
+		break;
+	case USE_CONSUMABLE:
+		if (pGrid->GetCurrentPlayer()->GetIsHack())
+		{
+			pGrid->PrintErrorMessage("You are hacked, you can't play this round");
+			pGrid->AdvanceCurrentPlayer();
+			return;
+		}
+		pAct = new UseConsumable(this);
 		break;
 	case STATUS: // a click on the status bar ==> no action
 		return;
@@ -143,4 +177,5 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		delete pAct;	 // Action is not needed any more after executing ==> delete it
 		pAct = NULL;
 	}
+	pRounds->Execute(this, ActType);
 }

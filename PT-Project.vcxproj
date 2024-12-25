@@ -194,11 +194,13 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="RebootRepair.cpp" />
     <ClCompile Include="RotatingGear.cpp" />
+    <ClCompile Include="Rounds.cpp" />
     <ClCompile Include="SaveGridAction.cpp" />
     <ClCompile Include="SelectMovement.cpp" />
     <ClCompile Include="ShootingPhase.cpp" />
     <ClCompile Include="SwichToDesignMode.cpp" />
     <ClCompile Include="SwichToPlayMode.cpp" />
+    <ClCompile Include="UseConsumable.cpp" />
     <ClCompile Include="WaterPit.cpp" />
     <ClCompile Include="Workshop.cpp" />
   </ItemGroup>
@@ -253,12 +255,14 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="RebootRepair.h" />
     <ClInclude Include="RotatingGear.h" />
+    <ClInclude Include="Rounds.h" />
     <ClInclude Include="SaveGridAction.h" />
     <ClInclude Include="SelectMovement.h" />
     <ClInclude Include="ShootingPhase.h" />
     <ClInclude Include="SwichToDesignMode.h" />
     <ClInclude Include="SwichToPlayMode.h" />
     <ClInclude Include="UI_Info.h" />
+    <ClInclude Include="UseConsumable.h" />
     <ClInclude Include="WaterPit.h" />
     <ClInclude Include="Workshop.h" />
   </ItemGroup>

@@ -13,10 +13,11 @@ hackdevice::hackdevice(ApplicationManager* pApp, Player* player, Grid* pGrid):Ac
 
  void hackdevice::  Execute()
  {
-	 this->pApp = pApp;
-	 this->player = player;
-	 this->pGrid = pGrid;
-	 
+	 Grid* pGrid = pManager->GetGrid();
+	 Output* pOut = pGrid->GetOutput();
+	 Input* pIn = pGrid->GetInput();
+	 Player* pPlayer = pGrid->GetNextPlayer();
+	 //pPlayer->SetIsHack(true);
  }
   hackdevice::~hackdevice()
  {

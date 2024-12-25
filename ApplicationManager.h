@@ -6,13 +6,13 @@
 class Input;
 class Output;
 class Grid;
-
+class Rounds;
 // Main class that manages everything in the application.
 class ApplicationManager
 {
 	// Pointer to the Grid
 	Grid* pGrid;
-
+	Rounds* pRounds;
 	// Pointers to the Input and Output 
 	Input *pIn;
 	Output *pOut;

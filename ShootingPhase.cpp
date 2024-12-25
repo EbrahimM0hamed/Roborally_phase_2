@@ -1,13 +1,8 @@
 #include "ShootingPhase.h"
 
-ShootingPhase::ShootingPhase(ApplicationManager* pApp) : Action(pApp)
+ShootingPhase::ShootingPhase(ApplicationManager* pApp,int damage) : Action(pApp)
 {
-	Grid* pGrid = pManager->GetGrid();
-
-	for (int i = 0;i < MaxPlayerCount; i++)
-	{
-		PlayerList[i] = pGrid->GetCurrentPlayer();
-	}
+	this->damage=damage;
 }
 
 void ShootingPhase::ReadActionParameters()
@@ -18,20 +13,12 @@ void ShootingPhase::Execute()
 {
 	Grid* pGrid = pManager->GetGrid();
 	Player* currPlayer = pGrid->GetCurrentPlayer();
-	Player* oppPlayer = NULL;
-	for (int i = 0; i < MaxPlayerCount; i++)
-	{
-		if (PlayerList[i] != currPlayer)
-		{
-			oppPlayer = PlayerList[i];
-			break;
-		}
-	}
-	if (oppPlayer == NULL)
+	Player* oppPlayer = pGrid->GetNextPlayer();
+	/*if (oppPlayer == NULL)
 	{
 		pGrid->PrintErrorMessage("Opponent not found");
 		return;
-	}
+	}*/
 	CellPosition currPosition = currPlayer->GetCell()->GetCellPosition();
 	CellPosition oppPosition = oppPlayer->GetCell()->GetCellPosition();
 
@@ -40,22 +27,22 @@ void ShootingPhase::Execute()
 
 	if (currPosition.HCell() == oppPosition.HCell())
 	{
-		if (currDirection == RIGHT && oppPosition.VCell() > currPosition.VCell())
+		if (currDirection == DOWN && oppPosition.VCell() > currPosition.VCell())
 		{
 			isFaced = true;
 		}
-		else if (currDirection == LEFT && oppPosition.VCell() < currPosition.VCell()) 
+		else if (currDirection == UP && oppPosition.VCell() < currPosition.VCell()) 
 		{
 			isFaced = true;
 		}
 	}
 	else if (currPosition.VCell() == oppPosition.VCell())
 	{
-		if (currDirection == UP && oppPosition.HCell() < currPosition.HCell())
+		if (currDirection == LEFT && oppPosition.HCell() < currPosition.HCell())
 		{
 			isFaced = true;
 		}
-		else if(currDirection == DOWN && oppPosition.HCell() > currPosition.HCell()) 
+		else if(currDirection == RIGHT && oppPosition.HCell() > currPosition.HCell()) 
 		{
 			isFaced = true;
 		}

@@ -7,10 +7,10 @@
 class ShootingPhase:public Action
 {
 	Player* PlayerList[MaxPlayerCount];
-	int damage = 1;
+	int damage;
 
 public:
-	ShootingPhase(ApplicationManager* pApp);
+	ShootingPhase(ApplicationManager* pApp,int damage);
 	virtual void ReadActionParameters();
 	virtual void Execute();
 	virtual ~ShootingPhase();

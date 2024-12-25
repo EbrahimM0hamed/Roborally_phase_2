@@ -19,11 +19,13 @@ void Workshop::Draw(Output * pOut) const
 void Workshop::Apply(Grid * pGrid, Player * pPlayer,Input *pIn)
 {
 	Output* pOut = pGrid->GetOutput();
-	pOut->PrintMessage("You reached a workshop! To Purchase additional equipment enter : 1 Double Laser - 2 Extended Memory - 3 Toolkit - 4 Hack Device)");
+	pOut->PrintMessage("You reached a workshop! To Purchase additional equipment enter : 1 Double Laser - 2 Extended Memory - 3 Toolkit - 4 Hack Device");
 	int choice = pIn->GetInteger(pOut);
 	if (choice == 1)
 	{
 		pOut->PrintMessage("You purchased a Double Laser");
+		Player* pPlayer = pGrid->GetCurrentPlayer();
+		pPlayer->SetDoubleLaser(1);
 	}
 	else if (choice == 2)
 	{
@@ -37,6 +39,8 @@ void Workshop::Apply(Grid * pGrid, Player * pPlayer,Input *pIn)
 	else if (choice == 4)
 	{
 		pOut->PrintMessage("You purchased a Hack Device");
+		Player* pPlayer = pGrid->GetCurrentPlayer();
+;		pPlayer->SetNumHacked(1);
 	}
 	else
 	{

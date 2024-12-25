@@ -12,6 +12,7 @@ class Cell;
 class GameObject;
 class Player;
 class Belt;
+class Antenna;
 class Grid
 {
 	Output * pOut;   // A pointer to the Output object
@@ -24,7 +25,7 @@ class Grid
 	Player* PlayerList[MaxPlayerCount]; // An array of "Pointers" to the Players of the Game (MaxPlayerCount Players)
 	int currPlayerNumber;   // The player number that has the turn to play 
 							// currPlayerNumber is: from 0 to MaxPlayerCount - 1
-
+	Antenna* pAntenna;
 	GameObject * Clipboard;	   // This is used in copy/cut/paste game objects (should be set in copy/cut and got in paste)
 	bool hasFlag;
 	bool hasAntenna;
@@ -67,6 +68,7 @@ public:
 	void setBeltBody(Belt *pBelt,bool exist);
 	bool checkBeltBody(Belt *pBelt);
 	bool checkBeltEnd(CellPosition cellpos);
+	Antenna* GetAntenna();
 	CellPosition GetAntennaPosition();
 	// command GetSavedMoveCommands(int index);
 	///TODO: add any needed setter/getter "EXCEPT" ANY setters or getters of "CellList" or "PlayerList" (Forbidden for class Responsibilities)
