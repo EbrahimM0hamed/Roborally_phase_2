@@ -112,6 +112,7 @@ struct UI_Info	// User Interface Info.
 	int BeltXOffset;			// Size of the horizontal space before drawing the belt
 	int BeltYOffset;			// Size of the vertical space before drawing the belt
 	int BeltLineWidth;			// Width of the belt line
+	int LaserWidth;
 	int FlagWidth;				// Width of the flag
 	int FlagHeight;				// Height of the flag
 	int FlagPoleWidth;			// Width of the flag pole

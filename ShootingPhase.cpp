@@ -12,13 +12,10 @@ void ShootingPhase::ReadActionParameters()
 void ShootingPhase::Execute()
 {
 	Grid* pGrid = pManager->GetGrid();
+	Output* pOut = pGrid->GetOutput();
+	Input* pIn = pGrid->GetInput();
 	Player* currPlayer = pGrid->GetCurrentPlayer();
 	Player* oppPlayer = pGrid->GetNextPlayer();
-	/*if (oppPlayer == NULL)
-	{
-		pGrid->PrintErrorMessage("Opponent not found");
-		return;
-	}*/
 	CellPosition currPosition = currPlayer->GetCell()->GetCellPosition();
 	CellPosition oppPosition = oppPlayer->GetCell()->GetCellPosition();
 
@@ -70,10 +67,11 @@ void ShootingPhase::Execute()
 
 		if (oppPlayer->GetHealth() <= 0)
 		{
-			pGrid->PrintErrorMessage("Player // wins");
+			pGrid->PrintErrorMessage("Player " +to_string(currPlayer->GetplayerNum())+ " wins");
 
 			pGrid->SetEndGame(true);
 		}
+
 	}
 }
 

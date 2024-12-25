@@ -248,6 +248,7 @@
     <ClCompile Include="UseConsumable.cpp">
       <Filter>Actions</Filter>
     </ClCompile>
+    <ClCompile Include="NewGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -426,5 +427,6 @@
     <ClInclude Include="UseConsumable.h">
       <Filter>Actions</Filter>
     </ClInclude>
+    <ClInclude Include="NewGame.h" />
   </ItemGroup>
 </Project>

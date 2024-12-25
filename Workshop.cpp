@@ -19,7 +19,7 @@ void Workshop::Draw(Output * pOut) const
 void Workshop::Apply(Grid * pGrid, Player * pPlayer,Input *pIn)
 {
 	Output* pOut = pGrid->GetOutput();
-	pOut->PrintMessage("You reached a workshop! To Purchase additional equipment enter : 1 Double Laser - 2 Extended Memory - 3 Toolkit - 4 Hack Device");
+	pOut->PrintMessage("You reached a workshop! To Purchase additional equipment enter : 1 Double Laser - 2 Extended Memory - 3 Toolkit - 4 Hack Device -5 Shield Mechanic");
 	int choice = pIn->GetInteger(pOut);
 	if (choice == 1)
 	{
