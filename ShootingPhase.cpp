@@ -61,8 +61,10 @@ void ShootingPhase::Execute()
 		}
 		else
 		{
+			pOut->DrawLaser(currPlayer->GetCell()->GetCellPosition(), oppPlayer->GetCell()->GetCellPosition());
 			oppPlayer->reduceHealth(damage);
 			pGrid->PrintErrorMessage("You hit another player, click to continue");
+			pOut->RemoveLaser(currPlayer->GetCell()->GetCellPosition(), oppPlayer->GetCell()->GetCellPosition());
 		}
 
 		if (oppPlayer->GetHealth() <= 0)

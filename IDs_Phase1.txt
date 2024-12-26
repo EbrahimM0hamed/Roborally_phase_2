@@ -1,0 +1,34 @@
+TEAM NUMBER 10
+
+1) Ebrahim Mohamed Abdel Magied  ID: 1230002   Email: ebrahim.mohamed05@eng-st.cu.edu.eg
+2) Omar Essam Ali Shady          ID: 1230075   Email: omar.shady05@eng-st.cu.edu.eg
+3) Mohamed Ahmed Maher           ID: 1230097   Email: Mohamed.fahmy05@eng-st.cu.edu.eg
+4) Zeina Mohamed Adly            ID: 1230042   Email: Zeina.Ahmed05@eng-st.cu.edu.eg
+
+Work distribution:
+
+Ebrahim:
+- class cellPosition
+- testcode (2,4)
+
+Mohamed:
+- class input
+- testcode (3,5)
+Omar:
+- DrawTriangle
+- DrawImageInCell 
+- CreateDesignModeToolBar
+- CreatePlayModeToolBar
+- CreateCommandsBar
+- PrintPlayersInfo
+- testcode (1)
+Zeina:
+- DrawCell
+- DrawPlayer 
+- DrawBelt 
+- DrawFlag 
+- DrawRotatingGear 
+- DrawWorkshop 
+- DrawAntenna 
+- DrawDangerZone 
+- DrawWaterPit

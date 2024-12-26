@@ -15,6 +15,7 @@ Player::Player(Cell * pCell, int playerNum) : stepCount(0), health(10), playerNu
     }
 	toolKit=0;
 	numHacked=0;
+	doubleLaser = 0;
 	isHacked = false;
 	isShielded = false;
 	hasSheild = false;

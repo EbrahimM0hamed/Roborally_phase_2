@@ -1,0 +1,17 @@
+Flag Number: 1
+35
+Belt Number: 1
+16 19
+Antenna Number: 1
+28
+RotatingGear Number: 4
+15
+24
+25
+39
+Workshop Number: 1
+38
+WaterPit Number: 1
+41
+DangerZone Number: 1
+30
